@@ -1,0 +1,174 @@
+<section id="stock-tokenization-pt" aria-labelledby="st-title-pt">
+<!-- ENV SWITCH (choose ONE mode) -->
+  <!-- LOCAL (VS/VSC): uncomment the two lines below -->
+ <script>window.STOCKTOK_BASE = ".";</script>
+  <script src="./env-switcher.js"></script>
+  <!-- WORDPRESS (Elementor/cPanel): keep the lines above commented (default) -->
+
+  <style>
+    @import url("/wp-content/themes/lucrar-hello-child/stock_tokenization/stock-tokenization.css");
+    #stock-tokenization-pt .st-note { pointer-events: auto; }
+    #stock-tokenization-pt .st-note text,
+    #stock-tokenization-pt .st-note textPath,
+    #stock-tokenization-pt .st-note tspan,
+    #stock-tokenization-pt .st-note a { pointer-events: auto; cursor: pointer; }
+    #stock-tokenization-pt .st-note text { text-decoration: none !important; }
+    #stock-tokenization-pt .st-note .st-fb-link { text-decoration: underline; cursor: pointer; }
+  </style>
+
+  <div class="st-topbar-wrap">
+    <img class="st-topbar" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/Ret%C3%A2ngulo-1-copiar.png" alt="">
+    <div class="st-brand" aria-hidden="true">
+      <img class="st-logo" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/logo-copiar%281%29.png" alt="Logo">
+      <div class="st-brand-inner">
+        <div class="st-titlewrap">
+          <h1 id="st-title-pt">Stock Tokenization</h1>
+          <b id="st-since-pt">since 2022</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="st-wrap">
+    <p class="st-sub">Non-security utility tokens derived from the equity and cash flows of a real company.</p>
+    <h2 class="st-h2">Real Utility Tokens</h2>
+
+    <div class="st-stage" role="img" aria-label="Bag with tokens and illustrative arrows">
+      <img class="st-arrow a1" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/Layer-24-copy-copiar-9.png" alt="" loading="lazy">
+      <img class="st-arrow a4" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/Layer-24-copy-copiar-6.png" alt="" loading="lazy">
+      <img class="st-arrow a3" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/Layer-24-copy-copiar-8.png" alt="" loading="lazy">
+      <img class="st-arrow a2" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/Layer-24-copy-copiar-7.png" alt="" loading="lazy">
+
+      <img class="st-bag" src="/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/ChatGPT-Image-6_07_2025%2C22_40_21.png" alt="Bag with tokens" fetchpriority="high">
+
+      <svg id="st-note-pt" class="st-note"
+           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" preserveAspectRatio="none"
+           data-text="Financial<br>Game (play now)|Real Estate (see above)|Real-world Financial Events<br>(see 2023)"></svg>
+
+      <figcaption class="st-call" aria-label="Notice">
+        <span class="st-call-frame" aria-hidden="true"></span>
+        <span class="st-call-text">
+          Don’t buy the token unless you
+          <a id="open-lcr-modal" class="st-link-inline" href="#lcr">use it</a>
+        </span>
+      </figcaption>
+    </div>
+
+    <section class="st-articles" id="st-articles-pt" data-cat="BEST" data-num="12" data-open="modal">
+      <h2 class="st-h2">Featured Financial Articles</h2>
+      <p class="st-sub" style="margin-top:-8px;opacity:.9">Authors are also rewarded with tokens.</p>
+      <div class="ta-slider" role="region" aria-label="Featured Articles">
+        <button class="ta-nav ta-prev" aria-label="Previous" type="button"><span class="ta-ico"></span></button>
+        <div class="ta-track" tabindex="0" aria-live="polite"></div>
+        <button class="ta-nav ta-next" aria-label="Next" type="button"><span class="ta-ico"></span></button>
+      </div>
+    </section>
+  </div>
+
+  <div class="st-modal" id="stModal-pt" aria-hidden="true" hidden style="display:none">
+    <div class="st-backdrop" data-close></div>
+    <div class="st-dialog" role="dialog" aria-modal="true" aria-labelledby="stModal-title-pt"
+         style="--modal-w:min(96vw,1140px);--modal-maxh:88vh;--modal-content-h:min(78vh,760px);--modal-close:46px">
+      <button class="st-close" type="button" data-close aria-label="Close">×</button>
+      <h2 id="stModal-title-pt" class="sr-only">Popup content</h2>
+      <div class="st-body">
+        <iframe id="stIframe-pt" class="st-iframe" src="about:blank" title="Popup content" loading="lazy"></iframe>
+        <div id="stGallery-pt" class="st-gallery" hidden></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.EVENTS_GALLERY_FOLDER = '/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/slider_evento_ver_em_2023/';
+    window.GAME_DESKTOP_URL = '/wp-content/themes/lucrar-hello-child/stock_tokenization/game/index.html';
+    window.GAME_TESLA_URL   = '/wp-content/themes/lucrar-hello-child/stock_tokenization/Tesla-Jump-Game-WebGL-1.0/index.html';
+    window.METAMASK_IMG     = '/wp-content/themes/lucrar-hello-child/stock_tokenization/assets/metamask/MetaMask_Fox.svg.png';
+  </script>
+
+  <script src="/wp-content/themes/lucrar-hello-child/stock_tokenization/stock-tokenization.js" defer></script>
+
+  <script>
+  (function(){
+    const root = document.querySelector('#stock-tokenization-pt');
+    if(!root) return;
+    const note = root.querySelector('#st-note-pt');
+    const fire = (href) => window.dispatchEvent(new CustomEvent('st:open', { detail:{ href } }));
+
+    function scrollAbove(){
+      const el = document.getElementById('real-estate-3d') || root;
+      const admin = document.getElementById('wpadminbar');
+      const off = admin ? (admin.offsetHeight||0) : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - off - 12;
+      window.scrollTo({ top, behavior:'smooth' });
+    }
+
+    function bind(){
+      if(!note) return;
+      const texts = note.querySelectorAll('text');
+      let bound = 0;
+
+      texts.forEach(t=>{
+        const txt = (t.textContent||'').toLowerCase();
+        let action = null;
+        if (/\bplay now\b/.test(txt)) action = 'game';
+        else if (/\bsee above\b/.test(txt)) action = 'scroll';
+        else if (/\bsee(?: in)? 2023\b/.test(txt)) action = 'events';
+        if(!action) return;
+
+        t.style.textDecoration = 'underline';
+        t.setAttribute('role','link');
+        t.setAttribute('tabindex','0');
+
+        const go = (e)=>{
+          e?.preventDefault?.();
+          e?.stopPropagation?.();
+          if (action==='game') fire('game');
+          else if (action==='events') fire('events');
+          else if (action==='scroll') scrollAbove();
+        };
+
+        t.addEventListener('click', go);
+        t.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' ') go(e); });
+        bound++;
+      });
+
+      if(!bound) setTimeout(bind, 300);
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=> setTimeout(bind, 250));
+    window.addEventListener('load', ()=> setTimeout(bind, 250));
+    new MutationObserver(()=> setTimeout(bind, 50)).observe(root, { subtree:true, childList:true });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    const note = document.querySelector('#stock-tokenization-pt #st-note-pt');
+    if(!note) return;
+
+    function decorate(){
+      note.querySelectorAll('textPath').forEach(tp=>{
+        if (tp.querySelector('.st-fb-link')) return;
+        const txt = tp.textContent || '';
+        const m = txt.match(/\(\s*(play now|see above|see(?: in)? 2023)\s*\)/i);
+        if(!m) return;
+        const before = txt.slice(0, m.index);
+        const inside = m[0];
+        const after  = txt.slice(m.index + m[0].length);
+        const ns = 'http://www.w3.org/2000/svg';
+        tp.textContent = '';
+        if (before) tp.appendChild(document.createTextNode(before));
+        const sp = document.createElementNS(ns, 'tspan');
+        sp.setAttribute('class','st-fb-link');
+        sp.textContent = inside;
+        tp.appendChild(sp);
+        if (after) tp.appendChild(document.createTextNode(after));
+      });
+    }
+
+    decorate();
+    new MutationObserver(()=> setTimeout(decorate, 60)).observe(note, { subtree:true, childList:true });
+    window.addEventListener('load', ()=> setTimeout(decorate, 120));
+  })();
+  </script>
+</section>

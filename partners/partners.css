@@ -1,0 +1,104 @@
+/* ====== LOGO CAROUSEL (Lucrar Partners) ====== */
+.lcr-partners{
+  --h:56px;           /* altura dos logos */
+  --cell-w:clamp(140px, 12vw, 220px); /* largura fixa de cada célula p/ gaps iguais */
+  --gap:64px;         /* espaço entre logos */
+  --padX:6vw;
+  --padY:16px;
+  --bg:#0b1014;
+  --pxps:100;   /* velocidade: pixéis por segundo */
+  --line: 2px;          /* espessura da linha */
+  --line-color: #fff; 
+  color:#fff;
+  font:normal 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.lcr-partners--full .lcr-partners-strip{
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+.lcr-partners-strip{
+  position:relative;
+  overflow:hidden;
+  background:var(--bg);
+  padding:var(--padY) var(--padX);
+   border-top: var(--line) solid var(--line-color);
+  border-bottom: var(--line) solid var(--line-color);
+  /* fade nas bordas */
+  -webkit-mask-image:linear-gradient(to right, transparent 0, black 6%, black 94%, transparent);
+          mask-image:linear-gradient(to right, transparent 0, black 6%, black 94%, transparent);
+}
+
+/* trilho */
+.lcr-scroller{
+  display:flex;
+  align-items:center;
+  gap:var(--gap);
+  will-change:transform;
+  animation:lcr-scroll var(--duration, 30s) linear infinite;
+}
+
+/* pausa ao hover */
+.lcr-partners-strip:hover .lcr-scroller{ animation-play-state:paused; }
+
+/* cada “célula” tem largura fixa => gaps sempre iguais */
+.lcr-logo{
+  flex:0 0 auto;
+  width:var(--cell-w);
+  height:calc(var(--h) + 8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* normalização dos logos */
+.lcr-logo img{
+  display:block;
+  max-height:var(--h);
+  max-width:calc(var(--cell-w) - 16px);
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+/* acessibilidade: clones não lidos por screen readers */
+.lcr-logo[aria-hidden="true"]{ visibility:visible; }
+
+/* reduz movimento se o utilizador preferir */
+@media (prefers-reduced-motion: reduce){
+  .lcr-scroller{ animation:none; }
+}
+
+/* responsivo */
+@media (max-width:1024px){
+  .lcr-partners{ --h:48px; --gap:48px; --cell-w:clamp(120px, 24vw, 180px); }
+}
+@media (max-width:640px){
+  .lcr-partners{ --h:38px; --gap:32px; --padX:4vw; --cell-w:clamp(110px, 36vw, 160px); }
+}
+
+/* animação (distância de 1 ciclo vem do JS em --runW) */
+@keyframes lcr-scroll{
+  from{ transform:translate3d(0,0,0); }
+  to  { transform:translate3d(calc(-1*var(--runW, 1000px)),0,0); }
+}
+
+
+
+/* boost por-logo para imagens com muita margem interna */
+.lcr-logo{ overflow: visible; }               /* evita corte quando aumentar */
+.lcr-logo img{ 
+  transform: scale(var(--boost, 1)); 
+  transform-origin: center; 
+}
+
+/* força a animação mesmo com reduce-motion ativo */
+.lcr-partners--force-motion .lcr-scroller{
+  animation: lcr-scroll var(--duration, 30s) linear infinite !important;
+}
+@media (prefers-reduced-motion: reduce){
+  .lcr-partners--force-motion .lcr-scroller{
+    animation: lcr-scroll var(--duration, 30s) linear infinite !important;
+  }
+}

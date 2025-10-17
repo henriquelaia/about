@@ -1,0 +1,522 @@
+/* ====== FONTES LOCAIS (Akrobat Bold/Black) ====== */
+@font-face{
+  font-family:"Akrobat";
+  src:
+    url("./assets/fonts/Akrobat-Bold.woff2") format("woff2"),
+    url("./assets/fonts/Akrobat-Bold.otf") format("opentype");
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:
+    url("./assets/fonts/Akrobat-Black.woff2") format("woff2"),
+    url("./assets/fonts/Akrobat-Black.otf") format("opentype");
+  font-weight:900;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"SegoePrint";
+  src:
+    url("./assets/fonts/segoepr.woff2") format("woff2"),
+    url("./assets/fonts/segoepr.ttf") format("truetype");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* ====== HERO ====== */
+#gold-backup{
+  --bg:#0E1116; --fg:#E9EDF1; --gold1:#FFE39A; --gold2:#D6A500; --note:#FFE2A6;
+
+  --stage-h-vw:78;
+  --topbar-h-vw:29; --topbar-bleed-vw:9; --topbar-pos:100%;
+
+  --title-x-dt:50%; --title-y-dt:1%; --title-size-vw:5vw; --title-ingot-w:9vw;
+  --sub-x-dt:50%; --sub-y-dt:28%; --sub-size-vw:1.6vw;
+  --h2-x-dt:50%; --h2-y-dt:43%; --h2-size-vw:3.2vw;
+
+  --fig-x-dt:50%; --fig-y-dt:78%; --fig-w-pct:42%;
+  --frame-x-dt:50%; --frame-y-dt:180%; --frame-w:74%; --frame-rot:0deg; --frame-scale:1;
+
+  --safe-x-dt:50%; --safe-y-dt:180%; --safe-w:70%; --safe-rot:0deg; --safe-scale:1;
+
+  --arrow-x-dt:50%; --arrow-y-dt:197%; --arrow-w:20%; --arrow-rot:-19deg;
+
+  --note-ax-dt:76%; --note-ay-dt:92%; --note-rot:0deg; --note-curve:60; --note-font:18;
+  --note-align:center; --note-side:down;
+
+  --links-x-dt:50%; --links-y-dt:100%;
+  --mark-x-dt:50%; --mark-y-dt:110%; --mark-w:6%;
+
+  /* lados (iguais) */
+  --sideL-top:13%; --sideL-h:74%; --sideL-w:6.2%; --sideL-x:0%; --sideL-rot:0deg; --sideL-scale:1; --sideL-opacity:.92;
+  --sideR-top:13%; --sideR-h:74%; --sideR-w:6.2%; --sideR-x:0%; --sideR-rot:0deg; --sideR-scale:1; --sideR-opacity:.92;
+
+  --title-x: var(--title-x-dt);  --title-y: var(--title-y-dt);
+  --sub-x:   var(--sub-x-dt);    --sub-y:   var(--sub-y-dt);
+  --h2-x:    var(--h2-x-dt);     --h2-y:    var(--h2-y-dt);
+  --fig-x:   var(--fig-x-dt);    --fig-y:   var(--fig-y-dt);
+  --frame-x: var(--frame-x-dt);  --frame-y: var(--frame-y-dt);
+  --safe-x:  var(--safe-x-dt);   --safe-y:  var(--safe-y-dt);
+  --arrow-x: var(--arrow-x-dt);  --arrow-y: var(--arrow-y-dt);  --arrow-rot: var(--arrow-rot);
+  --note-ax: var(--note-ax-dt);  --note-ay: var(--note-ay-dt);
+  --links-x: var(--links-x-dt);  --links-y: var(--links-y-dt);
+  --mark-x:  var(--mark-x-dt);   --mark-y:  var(--mark-y-dt);
+
+  --glass-h: clamp(120px,14vw,220px);
+  --glass-alpha:.92;
+
+  /* tamanhos de título */
+  --title-size-dt: clamp(36px, 5vw, 62px);
+  --title-size-tb: clamp(30px, 5vw, 52px);
+  --title-size-mb: clamp(18px, 5.6vw, 20px);
+  --title-size: var(--title-size-dt);
+
+  background:var(--bg); color:var(--fg);
+  width:100vw; max-width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  margin-top:calc(var(--topbar-bleed-vw) * -1vw);
+  padding:calc(clamp(40px,6vw,80px) + (var(--topbar-bleed-vw) * 1vw)) 0 clamp(40px,6vw,80px);
+  position:relative; isolation:isolate; z-index:50; overflow:visible;
+  font-family:"Akrobat",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --title-wrap:nowrap;
+
+  /* mover line-height/smoothing para dentro do bloco (antes estava em body global) */
+  line-height:1.35;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+#gold-backup::before{
+  content:"";
+  position:absolute; left:0; right:0; top:0;
+  height:var(--glass-h);
+  background:linear-gradient(180deg,rgba(14,17,22,var(--glass-alpha)) 0%,rgba(14,17,22,calc(var(--glass-alpha)*.85)) 55%,rgba(14,17,22,0) 100%);
+  pointer-events:none; z-index:1;
+}
+#gold-backup *{box-sizing:border-box}
+#gold-backup img{display:block;max-width:100%;height:auto}
+
+#gold-backup .topbar{
+  position:absolute; left:50%; top:0; transform:translateX(-50%);
+  width:100vw; height:calc(var(--topbar-h-vw) * 1vw);
+  object-fit:cover; object-position:50% var(--topbar-pos);
+  z-index:0; pointer-events:none;
+}
+#gold-backup .side{position:absolute; opacity:var(--opacity,1); z-index:0; pointer-events:none; object-fit:contain}
+#gold-backup .side.left  { left:var(--x,0%);  top:var(--top); height:var(--h); width:var(--w); transform:rotate(var(--rot)) scale(var(--scale)) }
+/* direita espelhada para usar o mesmo PNG */
+#gold-backup .side.right { right:var(--x,0%); top:var(--top); height:var(--h); width:var(--w); transform:scaleX(-1) rotate(var(--rot)) scale(var(--scale)) }
+
+#gold-backup .wrap{width:min(1100px,96vw); margin:0 auto; position:relative; z-index:2}
+#gold-backup .stage{position:relative; min-height:calc(var(--stage-h-vw) * 1vw)}
+#gold-backup .pos{position:absolute; transform:translate(-50%,-50%); transform-origin:center}
+#gold-backup .pos[style*="--x"]{ left:var(--x) } #gold-backup .pos[style*="--y"]{ top:var(--y) }
+
+#gold-backup .title{display:inline-block; min-width:0}
+#gold-backup .title .ingot{
+  position:absolute; left:0; top:50%;
+  transform:translate(calc(-100% - 0.9vw), -50%);
+  width:var(--title-ingot-w); min-width:0; max-width:none;
+}
+
+#gold-backup #gb-title{
+  margin:0;
+  line-height:1.04;
+  font-family:"Akrobat", sans-serif;
+  font-weight:900;
+  letter-spacing:.2px;
+  font-size:var(--title-size);
+  color:#EFD7A0 !important;
+  text-shadow:none !important;
+  white-space:var(--title-wrap,nowrap);
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+}
+#gold-backup.allow-title-wrap{ --title-wrap: normal }
+
+#gold-backup .sub{max-width:60ch; text-align:center; font-size:var(--sub-size-vw); line-height:1.55; opacity:.95}
+#gold-backup .h2{font-size:var(--h2-size-vw); font-weight:800; letter-spacing:.2px}
+
+#gold-backup .figure{width:var(--fig-w-pct); aspect-ratio:1/1; position:relative}
+#gold-backup .figure .layer{position:absolute;left:50%;top:50%;width:100%;transform:translate(-50%,-50%)}
+#gold-backup .figure .safe{ left:var(--safe-x); top:var(--safe-y); width:var(--safe-w); transform:translate(-50%,-50%) rotate(var(--safe-rot)) scale(var(--safe-scale)); z-index:2; filter:drop-shadow(0 12px 34px rgba(0,0,0,.55)) }
+#gold-backup .figure .arrow{position:absolute;left:var(--arrow-x);top:var(--arrow-y);width:var(--arrow-w);transform:translate(-50%,-50%) rotate(var(--arrow-rot));z-index:3;pointer-events:none}
+
+/* ====== SVG NOTE ====== */
+#gold-backup .note-stage{position:absolute; inset:0; z-index:3; pointer-events:none; overflow:visible}
+#gold-backup .note-stage text{font-family:"SegoePrint",cursive; fill:var(--note); dominant-baseline:middle; text-anchor:middle}
+
+#gold-backup .links{display:flex; gap:0}
+#gold-backup .links a{color:var(--fg); text-decoration:none; margin:0 14px; font-weight:700; opacity:.92; white-space:nowrap}
+#gold-backup .links a:hover{opacity:1; text-decoration:underline; text-underline-offset:3px}
+#gold-backup .links a:not(:first-child)::before{content:"|"; margin-right:14px; color:rgba(255,255,255,.66)}
+
+#gold-backup .mark{width:var(--mark-w); filter:drop-shadow(0 6px 16px rgba(0,0,0,.35)); opacity:.95}
+
+/* ====== MODAL ====== */
+#gold-backup .gb-modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999}
+#gold-backup .gb-modal[aria-hidden="false"]{display:flex}
+#gold-backup .gb-modal .gb-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.72)}
+#gold-backup .gb-modal .gb-dialog{
+  position:relative;
+  width:min(96vw,1140px);
+  max-height:88vh;
+  background:#0f1217; border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.5)
+}
+#gold-backup .gb-modal .gb-body{padding:0; background:#0f1217}
+#gold-backup .gb-modal .gb-body .calwrap,
+#gold-backup .gb-modal .gb-body .pdfwrap{ width:100%; height:min(78vh,760px); display:flex; align-items:stretch }
+#gold-backup .gb-modal .gb-body .pdfwrap iframe{ width:100%; height:100%; border:0 }
+#gold-backup .calendly-inline-widget{ width:100% !important; height:100% !important; min-width:0 !important }
+#gold-backup .gb-modal img{display:block; max-width:100%; height:auto; max-height:calc(88vh - 56px); margin:0 auto; object-fit:contain}
+#gold-backup .gb-modal .gb-close{
+  width:46px;height:46px;border-radius:999px;--accent1:#36fba1;--accent2:#0c8f52;--ring:rgba(255,255,255,.18);
+  background:radial-gradient(120% 120% at 30% 30%,var(--accent1),var(--accent2));
+  color:#0b1217;border:0;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 22px rgba(54,251,161,.34);
+  display:flex;align-items:center;justify-content:center;line-height:1;font-weight:900;font-size:22px;
+  position:absolute;right:14px;top:12px;isolation:isolate;cursor:pointer;z-index:2
+}
+#gold-backup .gb-modal .gb-close::before{content:"";position:absolute;inset:3px;border-radius:inherit;box-shadow:inset 0 0 0 2px var(--ring)}
+@keyframes gbPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.08)}}
+#gold-backup .gb-modal[aria-hidden="false"] .gb-close{animation:gbPulse 2.8s ease-in-out infinite}
+
+/* ====== VW FIX ====== */
+#gold-backup{ --vwpx: 1vw }
+#gold-backup{ margin-top: calc(var(--topbar-bleed-vw) * -1 * var(--vwpx)) }
+#gold-backup .topbar{ height: calc(var(--topbar-h-vw) * var(--vwpx)); width: 100% }
+#gold-backup .stage{ min-height: calc(var(--stage-h-vw) * var(--vwpx)) }
+#gold-backup{ padding: calc(clamp(40px,6vw,80px) + (var(--topbar-bleed-vw) * var(--vwpx))) 0 clamp(40px,6vw,80px) }
+
+/* ====== TABLET ====== */
+@media (min-width:641px) and (max-width:1024px){
+  #gold-backup{
+    --stage-h-vw:120;
+    --topbar-h-vw:26;
+    --topbar-pos:82%;
+    --topbar-bleed-vw:5;
+    --glass-h: clamp(90px,11vw,160px);
+    --glass-alpha:.86;
+    --title-x:50%; --title-y:3%;
+    --sub-x:50%;   --sub-y:19%;
+    --h2-x:50%;    --h2-y:30%;
+    --fig-x:50%;   --fig-y:68%;
+    --frame-y:165%; --safe-y:165%;
+    --arrow-x:50%; --arrow-y:182%;
+    --note-ax:74%; --note-ay:73%;
+    --links-y:80%; --mark-y:90%;
+    --title-size-vw:6.2vw;
+    --title-ingot-w:8vw;
+    --sub-size-vw:1.9vw;
+    --h2-size-vw:3.2vw;
+    --note-font:15;
+    --fig-w-pct:54%;
+    --frame-w:72%; --safe-w:68%;
+    --arrow-w:20%;
+    --title-size: var(--title-size-tb);
+  }
+  #gold-backup .gb-modal .gb-dialog{ width:86vw; max-height:82vh; border-radius:12px }
+  #gold-backup .gb-modal .gb-body .calwrap, #gold-backup .gb-modal .gb-body .pdfwrap{ height:min(66vh,600px) }
+  #gold-backup .gb-modal img{ max-height:calc(82vh - 56px) }
+}
+
+/* ====== MOBILE ====== */
+@media (max-width:640px){
+  #gold-backup{
+    --stage-h-vw:128;
+    --topbar-h-vw:31;
+    --topbar-pos:100%;
+    --topbar-bleed-vw:25;
+    --glass-h: clamp(80px,10vw,140px);
+    --glass-alpha:.84;
+    --title-x:50%; --title-y:-12%;
+    --sub-x:50%;   --sub-y:6%;
+    --h2-x:50%;    --h2-y:26%;
+    --fig-x:50%;   --fig-y:65%;
+    --frame-y:158%; --safe-y:158%;
+    --arrow-x:46%; --arrow-y:178%;
+    --note-ax:72%; --note-ay:77%;
+    --links-y:89%; --mark-y:106%;
+    --title-size-vw:8vw; --title-ingot-w:10vw;
+    --sub-size-vw:3vw;  --h2-size-vw:4.8vw;
+    --note-font:16;
+    --fig-w-pct:64%;
+    --frame-w:80%; --safe-w:78%;
+    --arrow-w:17%;
+    --title-size: var(--title-size-mb);
+  }
+  #gold-backup .wrap{padding-bottom:1vh}
+  #gold-backup .gb-modal .gb-dialog{ width:92vw; max-height:84vh; border-radius:14px }
+  #gold-backup .gb-modal .gb-body .calwrap, #gold-backup .gb-modal .gb-body .pdfwrap{ height:min(68vh,520px) }
+  #gold-backup .gb-modal img{ max-height:calc(84vh - 56px) }
+  #gold-backup .gb-modal .gb-close{ width:52px; height:52px; font-size:24px; right:10px; top:10px }
+  #gold-backup .links{
+    flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 18px;
+    max-width:86%; margin:0 auto;
+  }
+  #gold-backup .links a{ margin:0; font-size:clamp(12px,3.2vw,14px); line-height:1.2; white-space:nowrap }
+  #gold-backup .links a:not(:first-child)::before{ display:none }
+  #gold-backup .h2{ white-space:nowrap }
+  #gold-backup .h2 br{ display:none }
+  #gold-backup #gb-title{ font-size:var(--title-size) !important; }
+}
+
+/* ====== GRANULAR BREAKPOINTS ====== */
+
+/* <=392px */
+@media (max-width:392px){
+  #gold-backup{
+    --title-size: var(--title-size-mb);
+    --note-ax: 75%;
+    --note-ay: 77%;
+    --title-x:50%;
+    --sub-x:50%;
+    --h2-x:50%;
+    --fig-x:40%;
+    --arrow-x:50%;
+    --fig-w-pct:66%;
+    --frame-w:82%; --safe-w:80%;
+    --arrow-w:18%;
+    --sub-y:7%; --h2-y:27%;
+    --frame-y:160%; --safe-y:160%;
+  }
+}
+
+/* 393–422px */
+@media (min-width:393px) and (max-width:422px){
+  #gold-backup{
+    --title-size: var(--title-size-mb);
+    --note-ax: 75%;
+    --note-ay: 77%;
+    --title-x:50%;
+    --sub-x:50%;
+    --h2-x:50%;
+    --fig-x:40%;
+    --arrow-x:50%;
+    --fig-w-pct:66%;
+    --frame-w:82%; --safe-w:80%;
+    --arrow-w:18%;
+    --sub-y:7%; --h2-y:27%;
+    --frame-y:160%; --safe-y:160%
+  }
+}
+
+/* 423–521px */
+@media (min-width:423px) and (max-width:521px){
+  #gold-backup{
+    --title-size: var(--title-size-mb);
+    --note-ax: 73%;
+    --note-ay: 77%;
+    --title-x:50%;
+    --sub-x:50%;
+    --h2-x:50%;
+    --fig-x:40%;
+    --arrow-x:50%;
+    --fig-w-pct:66%;
+    --frame-w:82%; --safe-w:80%;
+    --arrow-w:18%;
+    --sub-y:7%; --h2-y:27%;
+    --frame-y:160%; --safe-y:160%
+  }
+}
+
+/* 522–640px */
+@media (min-width:522px) and (max-width:640px){
+  #gold-backup{
+    --title-size: var(--title-size-mb);
+    --note-ax: 71%;
+    --note-ay: 77%;
+    --title-x:50%;
+    --sub-x:50%;
+    --h2-x:50%;
+    --fig-x:40%;
+    --arrow-x:50%;
+    --fig-w-pct:66%;
+    --frame-w:82%; --safe-w:80%;
+    --arrow-w:18%;
+    --sub-y:7%; --h2-y:27%;
+    --frame-y:160%; --safe-y:160%
+  }
+}
+
+/* 641–772px */
+@media (min-width:641px) and (max-width:772px){
+  #gold-backup{
+    --note-ax: 73%;
+    --note-ay: 68%;
+    --fig-x:45%;
+    --arrow-x:49%;
+    --arrow-y:180%;
+    --topbar-h-vw:27; --topbar-bleed-vw:10;
+    --title-y:2%; --sub-y:18%; --h2-y:29%;
+    --frame-y:164%;
+  }
+}
+
+/* 773–1024px */
+@media (min-width:773px) and (max-width:1024px){
+  #gold-backup{
+    --note-ax: 71%;
+    --note-ay: 68%;
+    --fig-x:45%;
+    --arrow-x:49%;
+    --arrow-y:180%;
+    --topbar-h-vw:27; --topbar-bleed-vw:10;
+    --title-y:2%; --sub-y:18%; --h2-y:29%;
+    --frame-y:164%;
+  }
+}
+
+/* 1025–2554px */
+@media (min-width:1025px) and (max-width:2554px){
+  #gold-backup{
+    --note-ax: 69%;
+    --note-ay: 91%;
+    --fig-x:45%;
+    --arrow-x:49%;
+    --arrow-y:196%;
+    --sub-size-vw:1.2vw;  --h2-size-vw:2.5vw;
+    --title-y:2%; --sub-y:22%; --h2-y:41%;
+    --frame-y:164%;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* === HOTFIX: evitar cortes e centrar a figura/cofre === */
+
+/* 1) Nada de cortes */
+#gold-backup,
+#gold-backup .wrap,
+#gold-backup .stage,
+#gold-backup .figure,
+#gold-backup .note-stage { overflow: visible !important; }
+
+/* 2) Garantir centragem horizontal da figura, cofre e seta */
+#gold-backup{
+  --fig-x-dt: 50%;
+  --safe-x-dt: 50%;
+  --arrow-x-dt: 50%;
+  --frame-x-dt: 50%;
+}
+
+/* Tablet e mobile também a 50% (sobrepõe se já houver vars para estes) */
+@media (max-width:1024px){
+  #gold-backup{
+    --fig-x: 50%;
+    --safe-x: 50%;
+    --arrow-x: 50%;
+    --frame-x: 50%;
+  }
+}
+
+/* 3) Aumentar a altura do palco para caber tudo (cofre + seta) */
+#gold-backup{ --stage-h-vw: 92; }             /* desktop */
+@media (min-width:641px) and (max-width:1024px){
+  #gold-backup{ --stage-h-vw: 128; }          /* tablet */
+}
+@media (max-width:640px){
+  #gold-backup{ --stage-h-vw: 138; }          /* mobile */
+}
+
+/* 4) Reforço de centragem na própria figura */
+#gold-backup .figure{ left:50% !important; transform:translate(-50%,-50%) !important; }
+#gold-backup .figure .layer{ left:50% !important; transform:translate(-50%,-50%) !important; }
+#gold-backup .figure .safe{
+  left:50% !important;
+  transform:translate(-50%,-50%) rotate(var(--safe-rot)) scale(var(--safe-scale)) !important;
+}
+
+
+
+
+/* === TUNING DE POSIÇÃO (após recentrar o cofre) === */
+/* Desktop (≥1025px): sobe ~5% */
+@media (min-width:1025px){
+  #gold-backup{
+    --h2-y: 38%;
+    --note-ay: 80%;
+  }
+}
+
+/* Tablet (641–1024px): sobe ~3–4% */
+@media (min-width:641px) and (max-width:1024px){
+  #gold-backup{
+    --h2-y: 26%;
+    --note-ay: 64%;
+  }
+}
+
+/* Mobile (≤640px): sobe ~4–5% */
+@media (max-width:640px){
+  #gold-backup{
+    --h2-y: 22%;
+    --note-ay: 72%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* === NOTE: apenas mover direita/baixo (final override) === */
+
+/* Desktop (≥1025px) */
+@media (min-width:1025px){
+  #gold-backup{
+    --note-ax: 73%;   /* → mais à direita */
+    --note-ay: 80%;   /* ↓ mais em baixo  */
+  }
+}
+
+/* Tablet (641–1024px) */
+@media (min-width:641px) and (max-width:1024px){
+  #gold-backup{
+    --note-ax: 74%;
+    --note-ay: 65%;
+  }
+}
+
+/* Mobile (≤640px) */
+@media (max-width:640px){
+  #gold-backup{
+    --note-ax: 77%;
+    --note-ay: 72%;
+  }
+}
+
+
+
+
+
+/* === GOLD BACKUP — cobrir o “traço” de cima + tirar o logo do fundo === */
+
+/* 1) Garante que a secção fica por cima da anterior (tapa o traço) */
+#gold-backup{
+  position: relative;
+  z-index: 6000;                 /* acima de elementos da secção anterior */
+}
+
+/* 1.1) Opcional: sangrar um pouco mais o topo dourado para eliminar qualquer linha */
+@media (min-width:1025px){        /* desktop */
+  #gold-backup{ --topbar-bleed-vw: 12; }
+}
+@media (max-width:640px){         /* mobile */
+  #gold-backup{ --topbar-bleed-vw: 28; }
+}
+
+/* 2) Retirar o logótipo de baixo (que ficava semi-tapado pelo Stock Tokenization) */
+#gold-backup .mark{ display:none !important; }

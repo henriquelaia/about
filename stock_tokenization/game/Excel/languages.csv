@@ -1,0 +1,50 @@
+Tabela,eng,pt
+UI_BACK,Back,Voltar
+UI_NEXT,Next,Avançar
+UI_FREEPLAY,Free2Play,Jogo Livre
+UI_RANKED,Competitive,Competitivo
+UI_OPTIONS,Options,Opções
+UI_MARKET,Marketplace,Mercado
+UI_WITHDRAWAL,Withdrawal,Levantar
+UI_WANTTRAIN,I Want to Train,Eu quero Treinar
+UI_PLAY,Play,Jogar
+UI_EXPLORE_COLLECTION,Explore \vCollections,Explorar \vColeção
+UI_VS_BOT,Vs Bot,Vs Bot
+UI_STAKE,Stake,Stake
+UI_VS_PLAYER,Vs Player,Vs Jogador
+UI_ICONS,Icons,Icones
+UI_CHARACTERS,Characters,Personagens
+UI_LANGUAGE,Languages,Idiomas
+UI_WELCOME,Welcome!,Bem-Vindo!
+UI_SELECTLANG,Before you start playing...\vselect your language,Antes de começar o jogo...\vselecione seu idioma
+UI_ANSWERANDEARN,Answer questions and increase your financial literacy,Responda questões e ganhe dinheiro
+UI_CONNECTWALLET,Connect Wallet,Conectar Carteira
+UI_BACKTOMENU,Back to Menu,Voltar ao Menu
+UI_YOUWIN,You Win!,Você Ganhou
+UI_YOULOSE,You Lose,Você Perdeu
+UI_REWARDS,Rewards,Recompensas
+UI_CONNECT,Connect,Conectar
+UI_CONNECTWITHOUT,Continue without connect,Continuar sem conectar
+UI_CANCEL,Cancel,Cancelar
+,,
+UI_LEADERBOARD,Leaderboard,Placar
+UI_LEADERBOARD_RESET,Leaderboard <size=20>- resets every month,Placar <size=20>- reseta todo mês
+UI_LEADERBOARD_ID,Your Leaderboard ID: ,Seu ID no Placar: : 
+UI_LEADERBOARD_POSITION,Position,Posição
+UI_LEADERBOARD_WALLET,Wallet,Carteira
+UI_LEADERBOARD_WINS,Wins,Vitórias
+UI_LEADERBOARD_REWARD,Current reward: ,Recompensa atual: 
+UI_LEADERBOARD_REWARDWINNER,Winner reward: ,Recompensa do ganhador: 
+,,
+UI_STAKE_CURRENT,Your current stake: ,Seu stake atual: 
+UI_STAKE_UPDATE_REWARD,Update reward,Atualizar recompensa
+UI_STAKE_YIELD,Yield of the staked reward: 5%/Year approx. (0.014% Daily),Rendimento da recompensa "staked": 5%/Ano aprox. (0.014% diariamente)
+,,
+TIP_SPY,TIP: "SPY" NFT will win if it is a DRAW. Be careful!,Dica: O NFT "SPY" vai ganhar se terminar em empate. Tome cuidado!
+,,
+QUEUE_WAITING,"Waiting...","Aguardando..."
+,,
+DIFF_EASY,Easy,Fácil
+DIFF_MEDIUM,Medium,Médio
+DIFF_HARD,Hard,Difícil
+DIFF_ALL,All,Todos

@@ -1,0 +1,71 @@
+/* =========================================================
+   Single Post (com TOC + layout para Single with Ads)
+   ========================================================= */
+:root{
+  --bg:#0e1216;
+  --txt:#e6e6e6;
+  --muted:#a9b0b8;
+  --brand:#EFD7A0;
+  --card:#121820;
+  --br:16px;
+  --maxw:900px;
+}
+
+/* Base artigo */
+.single-article, .single-ads{background:var(--bg);color:var(--txt)}
+.article{max-width:var(--maxw);margin-inline:auto;padding:24px}
+
+/* Hero */
+.article__hero{border-radius:var(--br);overflow:hidden;margin:0 0 20px 0;background:#000}
+.article__hero img{width:100%;display:block;object-fit:cover;max-height:420px}
+
+/* Título & meta */
+.article__title{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+  font-weight:800; line-height:1.1;
+  font-size:clamp(1.9rem, 2.2vw + 1.2rem, 3rem);
+  margin:6px 0 10px; letter-spacing:.2px;
+}
+.article__meta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.95rem;flex-wrap:wrap}
+.article__dot{opacity:.6}
+
+/* TOC */
+.article__toc{border:1px solid rgba(255,255,255,.1);background:var(--card);border-radius:var(--br);padding:16px 16px 6px;margin:14px 0 22px}
+.toc__title{font-weight:700;margin-bottom:8px;color:#fff}
+.toc__list, .toc__sublist{list-style:none;margin:0;padding-left:0}
+.toc__list > li{margin:6px 0}
+.toc__sublist{padding-left:16px;margin-top:6px}
+.toc__list a{color:var(--brand);text-decoration:none}
+.toc__list a:hover{text-decoration:underline}
+
+/* Conteúdo */
+.entry-content, .article__content{line-height:1.72;font-size:1.07rem}
+.entry-content h2, .entry-content h3, .article__content h2, .article__content h3{scroll-margin-top:90px}
+.entry-content h2, .article__content h2{font-size:1.6rem;margin:28px 0 12px;color:#fff}
+.entry-content h3, .article__content h3{font-size:1.25rem;margin:20px 0 10px;color:#fff}
+.entry-content p, .article__content p{margin:12px 0}
+.entry-content img, .article__content img{max-width:100%;height:auto;border-radius:12px}
+
+/* Partilha/nav/autor/etc (opcional se usares) */
+.article__nav{display:flex;justify-content:space-between;gap:12px;margin:18px 0 8px}
+.article__nav a{color:var(--brand);text-decoration:none}
+.article__nav a:hover{text-decoration:underline}
+
+/* Layout com Ads (Template: Single Post with Ads) */
+.single-ads .content-with-sidebar{display:grid;grid-template-columns:1fr 300px;gap:18px}
+.single-ads .right-rail{position:sticky;top:90px;height:fit-content}
+.ad-slot{margin:14px 0}
+.ad-slot ins{min-height:250px;display:block}
+.ad-placeholder{height:250px;border:1px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+/* Responsivo */
+@media (max-width: 960px){
+  .single-ads .content-with-sidebar{grid-template-columns:1fr}
+  .single-ads .right-rail{display:none}
+  .article{padding:16px}
+  .article__hero img{max-height:320px}
+}
+@media print{
+  .ad-slot,.right-rail{display:none!important}
+  .single-article,.single-ads{background:#fff;color:#000}
+}

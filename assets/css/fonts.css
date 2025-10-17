@@ -1,0 +1,30 @@
+/* Variable (se existir) — evita o aviso de preload não utilizado */
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Variable.woff2") format("woff2");
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* Estáticos (fallbacks/compat) */
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Regular.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Black.woff2") format("woff2");
+  font-weight:900; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"SegoePrint";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/segoepr.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}

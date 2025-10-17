@@ -1,0 +1,94 @@
+/* =========================================================
+   Comparison (Ranked) — cards + tabela + brokers + FAQ + ads
+   ========================================================= */
+:root{
+  --bg:#0e1216; --card:#121820; --txt:#e6e6e6; --muted:#a9b0b8; --brand:#EFD7A0;
+  --br:16px; --gap:18px; --maxw:1100px;
+}
+
+/* Wrapper geral */
+.cmp-page{background:var(--bg);color:var(--txt)}
+.cmp-hero{max-width:var(--maxw);margin:0 auto;padding:20px;display:grid;gap:16px;grid-template-columns:160px 1fr}
+.cmp-hero-img{width:100%;height:120px;object-fit:cover;border-radius:var(--br)}
+.cmp-hero-txt h1{margin:0;font-size:clamp(1.8rem,2vw+1rem,2.6rem);line-height:1.15}
+.cmp-meta{display:flex;gap:10px;color:var(--muted);font-size:.95rem;align-items:center;flex-wrap:wrap}
+.cmp-excerpt{margin:.5rem 0 1rem;color:#fff}
+.cmp-disclaimer{font-size:.9rem;color:var(--muted)}
+
+/* TOC */
+.cmp-toc{max-width:var(--maxw);margin:0 auto 14px;border:1px solid rgba(255,255,255,.1);background:var(--card);border-radius:var(--br);padding:12px}
+.toc__title{font-weight:700;margin-bottom:8px}
+.toc__list,.toc__sublist{list-style:none;margin:0;padding:0}
+.toc__list>li{margin:6px 0}
+.toc__sublist{padding-left:16px;margin-top:6px}
+.toc__list a{color:var(--brand);text-decoration:none}
+.toc__list a:hover{text-decoration:underline}
+
+/* Layout conteúdo + sidebar */
+.cmp-content{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px; /* <- garante main na esquerda e sidebar à direita */
+  gap:var(--gap);
+}
+.cmp-main{min-width:0;} /* evita overflow de widgets/elementor na coluna principal */
+.cmp-sidebar{position:sticky;top:90px;height:fit-content}
+
+/* Secções/títulos */
+.cmp-sec-title{font-size:1.35rem;margin:18px 0 10px}
+
+/* Top Picks */
+.cmp-picks{display:grid;gap:var(--gap)}
+.cmp-picks.cols-2{grid-template-columns:repeat(2,1fr)}
+.cmp-picks.cols-3{grid-template-columns:repeat(3,1fr)}
+.pick{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--br);padding:14px;display:grid;gap:10px}
+.pick-head .badge{background:rgba(239,215,160,.15);border:1px solid rgba(239,215,160,.5);color:#fff;border-radius:999px;padding:4px 8px;font-size:.8rem}
+.pick-logo{width:120px;height:36px;object-fit:contain}
+.pick-name{margin:.2rem 0}
+.stars{font-weight:700}
+.btn.btn-cta{display:inline-block;padding:8px 12px;border-radius:10px;border:1px solid var(--brand);color:#000;background:var(--brand);text-decoration:none;font-weight:700}
+.btn.btn-cta:focus{outline:2px dashed var(--brand);outline-offset:2px}
+
+/* Tabela comparativa */
+.cmp-table-wrap{margin:14px 0}
+.table-scroll{overflow:auto;border:1px solid rgba(255,255,255,.08);border-radius:14px}
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+.cmp-table th,.cmp-table td{padding:12px;vertical-align:middle;text-align:left}
+.cmp-table thead th{position:sticky;top:0;background:#0b1016;z-index:1}
+.cmp-table tr:nth-child(even){background:rgba(255,255,255,.03)}
+.row-broker{display:flex;align-items:center;gap:10px}
+.row-logo{width:32px;height:32px;object-fit:contain}
+.btn-cta{white-space:nowrap}
+
+/* Secções por corretora */
+.cmp-broker{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;margin:16px 0}
+.brk-head{display:flex;align-items:center;gap:12px}
+.brk-logo{width:44px;height:44px;object-fit:contain}
+.brk-pros,.brk-cons{margin:.4rem 0 .6rem;padding-left:1.2rem}
+.brk-pros li::marker{color:#6ee7b7}
+.brk-cons li::marker{color:#fca5a5}
+
+/* FAQ */
+.cmp-faq .faq-item{border-top:1px solid rgba(255,255,255,.12);padding:10px 0}
+.faq-q{margin:.4rem 0}
+
+/* Ads */
+.ad-slot{margin:14px 0}
+.ad-slot ins{min-height:250px;display:block}
+.ad-placeholder{height:250px;border:1px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+/* Pequenos toques */
+.cmp-footer{max-width:var(--maxw);margin:8px auto 20px;padding:0 20px}
+
+/* Responsivo */
+@media (max-width: 960px){
+  .cmp-content{grid-template-columns:1fr}
+  .cmp-hero{grid-template-columns:1fr}
+  .cmp-sidebar{display:none}
+}
+@media print{
+  .ad-slot,.cmp-sidebar{display:none!important}
+  .cmp-page{background:#fff;color:#000}
+}

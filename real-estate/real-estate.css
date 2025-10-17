@@ -1,0 +1,992 @@
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Bold.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Black.woff2") format("woff2");
+  font-weight:900; font-style:normal; font-display:swap;
+}
+
+:root {
+  color-scheme: dark;
+}
+html,
+body {
+  margin: 0;
+  background: #0e1116;
+}
+
+/* ===== layout principal + variáveis ===== */
+.lcr-project {
+  --fg: #fff;
+  --accent: #efd7a0;
+
+  --padY: clamp(28px, 6vw, 72px);
+  --after-gap: 0;
+
+  --title-size: clamp(2rem, 5.6vw, 4rem);
+
+  --loc-font: clamp(1.125rem, 4vw, 2.5rem);
+  --loc-ico: clamp(26px, 4.2vw, 36px);
+
+  --note-size: clamp(1rem, 1.5vw, 2rem);
+
+  /* ===== legenda “Primeiro investimento …” ===== */
+  --cap-size: clamp(12px, 2.6vw, 18px);
+  --cap-min: 0.625rem; /* min absoluto */
+  --cap-max: 2rem; /* max absoluto */
+  --cap-font-k: 0.03; /* 3.0% da largura do prédio (escala de fonte) */
+
+  --stage-h: 60vw;
+  --stage-max-h: 100vh;
+  --b-width: 35vw;
+  --b-bottom: 26vw;
+  --b-x: 50%;
+  --stage-padB: 0;
+
+  /* posições base (desktop) */
+  --loc-x: 35%;
+  --loc-y: 5%;
+  --note-x: 54%;
+  --note-y: 9%;
+  --arrow-x: 51%;
+  --arrow-y: 15%;
+  --arrow-w: 5%;
+  --arrow-rot: -5deg;
+
+  /* Legenda = largura do prédio, sem quebra, âncora à esquerda do prédio */
+  --cap-x: 37%;
+  --cap-y: 55%;
+  --cap-dx: 0px;
+  --cap-dy: 0px;
+  --cap-rot: -7deg;
+  --cap-w-scale: 1;
+
+  /* “do zero” */
+  --fs-x: 50%;
+  --fs-y: 70%;
+  --fs-size: clamp(2rem, 5vw, 4rem);
+  --fs-icon: clamp(100px, 7vw, 120px);
+  --fs-gap: clamp(10px, 2vw, 16px);
+  --title-text-nudge: 0.2em;
+  --title-ico-nudge: 0.2em;
+  --fs-text-nudge: 0.45em;
+  --fs-icon-nudge: 0.2em;
+
+  /* decor */
+  --leaf-left: 0%;
+  --leaf-top: -4%;
+  --leaf-w: 8vw;
+  --leaf-opacity: 1;
+  --arc-right: 0%;
+  --arc-bottom: 0%;
+  --arc-w: 15vw;
+  --arc-opacity: 1;
+
+  /* CARD (posicionamento/escala) */
+  --card-x: 63%;
+  --card-y: 12%;
+  --card-w: 25%;
+
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  padding: var(--padY) 0 var(--after-gap);
+  color: var(--fg);
+  position: relative;
+  z-index: 10;
+  overflow-x: hidden;
+  font-family: "Akrobat", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+}
+
+.lcr-project * {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.lcr-project img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2.4vw, 14px);
+  margin: 0 0 clamp(12px, 3.5vw, 22px);
+}
+.title .ico {
+  width: clamp(42px, 7vw, 64px);
+  transform: translateY(var(--title-ico-nudge));
+}
+.title h2 {
+  font-size: var(--title-size);
+  line-height: 1.02;
+  margin: 0;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  transform: translateY(var(--title-text-nudge));
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.stage {
+  position: relative;
+  min-height: var(--stage-h);
+  max-height: var(--stage-max-h);
+  padding-bottom: var(--stage-padB);
+  overflow: hidden;
+}
+.pos {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  transform: translate(-50%, -50%);
+}
+
+.loc {
+  --x: var(--loc-x);
+  --y: var(--loc-y);
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  font-weight: 800;
+  font-size: var(--loc-font);
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+.loc img {
+  width: var(--loc-ico);
+}
+
+.bg-leaf {
+  position: absolute;
+  left: var(--leaf-left);
+  top: var(--leaf-top);
+  width: var(--leaf-w);
+  opacity: var(--leaf-opacity);
+  z-index: 1;
+}
+.bg-arc {
+  position: absolute;
+  right: var(--arc-right);
+  bottom: var(--arc-bottom);
+  width: var(--arc-w);
+  opacity: var(--arc-opacity);
+  z-index: 0;
+}
+
+.building {
+  position: absolute;
+  left: var(--b-x);
+  bottom: var(--b-bottom);
+  width: var(--b-width);
+  transform: translateX(-50%);
+  z-index: 5;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+}
+
+.note {
+  --x: var(--note-x);
+  --y: var(--note-y);
+  z-index: 11;
+  font-size: var(--note-size);
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.1;
+}
+
+.arrow {
+  --x: var(--arrow-x);
+  --y: var(--arrow-y);
+  width: var(--arrow-w);
+  transform: translate(-50%, -50%) rotate(var(--arrow-rot));
+}
+
+/* Legenda: largura do prédio, sem quebra */
+.caption {
+  --x: var(--cap-x);
+  --y: var(--cap-y);
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--b-width) * var(--cap-w-scale));
+  max-width: calc(var(--b-width) * var(--cap-w-scale));
+  text-align: center;
+  transform: translate(var(--cap-dx), calc(-50% + var(--cap-dy)))
+    rotate(var(--cap-rot));
+  z-index: 11;
+  letter-spacing: 0.6px;
+  opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  font-size: clamp(
+    var(--cap-min),
+    calc(var(--b-width) * var(--cap-font-k)),
+    var(--cap-max)
+  );
+}
+
+/* “do zero” */
+.from.pos {
+  --x: var(--fs-x);
+  --y: var(--fs-y);
+  display: flex;
+  align-items: center;
+  gap: var(--fs-gap);
+  z-index: 11;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: var(--fs-size);
+  white-space: nowrap;
+}
+.from.pos img {
+  width: var(--fs-icon);
+  height: auto;
+  transform: translateY(var(--fs-icon-nudge));
+}
+.from.pos span {
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(var(--fs-text-nudge));
+}
+
+/* ====== CARD ====== */
+.sr-only {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+.status-card {
+  position: absolute;
+  left: var(--card-x);
+  top: var(--card-y);
+  z-index: 50;
+  width: var(--card-w);
+  background: rgba(0, 0, 0, 0.34);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  padding: clamp(10px, 2vw, 30px);
+  backdrop-filter: saturate(120%) blur(0.6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  color: var(--fg);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+.status-card.is-visible {
+  opacity: 1;
+}
+.status-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background-image: url("/wp-content/themes/lucrar-hello-child/real-estate/assets/Layer23.png");
+  background-size: 140% 150%;
+  background-repeat: no-repeat;
+  background-position: center;
+  mix-blend-mode: screen;
+  opacity: 0.62;
+  filter: saturate(130%) brightness(1.06);
+  pointer-events: none;
+  z-index: 0;
+}
+.status-card::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
+.status-card * {
+  position: relative;
+  z-index: 1;
+}
+.status-card h4 {
+  display: none;
+}
+.status-card ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: 0.25em;
+}
+.status-card li {
+  font-size: clamp(0.5rem, 1vw, 2rem);
+  line-height: 1.27;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+.status-card li b {
+  font-weight: 800;
+}
+.status-card li b::after {
+  content: "  =  ";
+  opacity: 0.85;
+  font-weight: 400;
+  letter-spacing: 0.35px;
+}
+.status-card .ok {
+  color: #7cf29a;
+  font-weight: 900;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.status-card .pending {
+  opacity: 0.85;
+}
+
+.lcr-project [style*="outline"] {
+  outline: none !important;
+}
+
+
+@media (max-width: 3300px) {
+  .lcr-project {
+    --card-x: 65%;
+    --card-y: 5%;
+    --card-w: clamp(370px, 28vw, 800px);
+    --card-scale: 0.95;
+  }
+}
+
+@media (max-width: 2200px) {
+  .lcr-project {
+    --card-w: clamp(370px, 35vw, 500px);
+  }
+}
+
+@media (max-width: 1520px) {
+  .lcr-project {
+    --note-y: 8%;
+    
+    --card-w: clamp(370px, 30vw, 400px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .lcr-project {
+    --card-w: clamp(250px, 30vw, 300px);
+  }
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 1024px) {
+  .lcr-project {
+    --title-size: clamp(34px, 9vw, 45px);
+    --loc-font: clamp(20px, 5.5vw, 24px);
+    --note-size: clamp(13px, 4.5vw, 18px);
+
+    --cap-min: 0.75rem;
+    --cap-max: 1rem;
+    --cap-font-k: 0.028;
+    --cap-x: 38%;
+    --cap-y: 63%;
+    --cap-dx: 0px;
+    --cap-dy: 0px;
+    --cap-w-scale: 0.8;
+
+    --stage-h: 80vw;
+    --stage-max-h: 90vh;
+    --b-width: 45vw;
+    --b-bottom: 28vw;
+    --stage-padB: 0;
+
+    --loc-x: 26%;
+    --loc-y: 6%;
+    --note-x: 48%;
+    --note-y: 15%;
+    --arrow-x: 52%;
+    --arrow-y: 24%;
+    --arrow-w: 8vw;
+    --arrow-rot: -50deg;
+
+    --fs-x: 50%;
+    --fs-y: 80%;
+    --leaf-left: 0%;
+    --leaf-top: 0%;
+    --leaf-w: 10vw;
+    --arc-right: -25%;
+    --arc-bottom: -2%;
+    --arc-w: 32vw;
+
+    --card-x: 62%;
+    --card-y: 14%;
+    --card-w: clamp(230px, 30vw, 280px);
+    --card-scale: 0.95;
+  }
+}
+
+@media (max-width: 850px) {
+  .lcr-project {
+    --title-size: clamp(34px, 9vw, 45px);
+    --loc-font: clamp(20px, 5.5vw, 24px);
+    --note-size: clamp(13px, 4.5vw, 18px);
+
+    --cap-min: 0.75rem;
+    --cap-max: 1rem;
+    --cap-font-k: 0.028;
+    --cap-x: 38%;
+    --cap-y: 63%;
+    --cap-dx: 0px;
+    --cap-dy: 0px;
+    --cap-w-scale: 0.8;
+
+    --stage-h: 80vw;
+    --stage-max-h: 90vh;
+    --b-width: 45vw;
+    --b-bottom: 28vw;
+    --stage-padB: 0;
+
+    --loc-x: 26%;
+    --loc-y: 6%;
+    --note-x: 45%;
+    --note-y: 14%;
+    --arrow-x: 50%;
+    --arrow-y: 24%;
+    --arrow-w: 8vw;
+    --arrow-rot: -50deg;
+
+    --fs-x: 50%;
+    --fs-y: 80%;
+    --leaf-left: 0%;
+    --leaf-top: 0%;
+    --leaf-w: 10vw;
+    --arc-right: -25%;
+    --arc-bottom: -2%;
+    --arc-w: 32vw;
+
+    --card-x: 62%;
+    --card-y: 12%;
+    --card-w: clamp(230px, 30vw, 280px);
+    --card-scale: 0.95;
+  }
+}
+
+/* ===== Mobile ≤640 ===== */
+@media (max-width: 640px) {
+  .lcr-project {
+    --title-size: clamp(24px, 9vw, 34px);
+    --loc-font: clamp(10px, 5.5vw, 22px);
+
+    --cap-min: 0.5rem;
+    --cap-max: 1rem;
+    --cap-font-k: 0.026;
+    --cap-x: calc(var(--b-x) - (var(--b-width) / 2));
+    --cap-y: 74%;
+    --cap-dx: 58px;
+    --cap-dy: 0px;
+    --cap-w-scale: 0.8;
+
+    --fs-size: clamp(1rem, 4vw, 2rem);
+    --fs-icon: clamp(38px, 10vw, 60px);
+
+    --stage-h: 90vw;
+    --stage-max-h: 80vh;
+    --b-width: 60vw;
+    --b-bottom: 22vw;
+    --stage-padB: 0;
+
+    --loc-x: 20%;
+    --loc-y: 10%;
+    --note-size: clamp(0.75rem, 3vw, 1rem);
+    --note-x: 72%;
+    --note-y: 25%;
+    --arrow-x: 50%;
+    --arrow-y: 28%;
+    --arrow-w: 10vw;
+    --arrow-rot: 20deg;
+
+    --fs-x: 45%;
+    --fs-y: 88%;
+
+    --leaf-left: 0%;
+    --leaf-top: 25%;
+    --leaf-w: 10vw;
+    --arc-right: -25%;
+    --arc-bottom: -15%;
+    --arc-w: 35vw;
+
+    --card-x: 50%;
+    --card-y: 2%;
+    --card-w: clamp(210px, 30vw, 280px);;
+    --card-scale: 0.5;
+  }
+
+  .building {
+    left: var(--b-x);
+    bottom: var(--b-bottom);
+    transform: translateX(-50%);
+    margin: 0;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .lcr-project {
+    --card-x: 42%;
+    --card-y: 0%;
+  }
+}
+
+
+
+
+
+/* ===========================
+   LCR Real-Estate – OVERRIDES
+   (bloco único unificado)
+   =========================== */
+
+/* Título: usa o peso que tens instalado (Bold = 700) */
+#real-estate-3d .title h2{
+  font-weight:900;
+  letter-spacing:.2px;
+}
+
+/* Deixa os elementos decorativos poderem sair do palco */
+#real-estate-3d .stage{
+  overflow:visible;
+}
+
+/* Presets de posição/escala para a folha (image005copy.png)
+   e para o “spark” (Layer23) do lado esquerdo */
+#real-estate-3d{
+  /* Folha */
+  --leaf-left: -6%;
+  --leaf-top:  -6%;
+  --leaf-w:    30vw;
+  --leaf-opacity: .22;
+
+  /* Layer23 à esquerda (junto da folha) */
+  --spark-left: -14%;
+  --spark-top:     2%;
+  --spark-w:      44vw;
+  --spark-opacity: .45;
+}
+
+/* Folha (image005copy.png) – usa as variáveis acima */
+#real-estate-3d .bg-leaf{
+  position:absolute;
+  left: var(--leaf-left);
+  top:  var(--leaf-top);
+  width: var(--leaf-w);
+  height:auto;
+  opacity: var(--leaf-opacity);
+  z-index:1;
+  pointer-events:none;
+  filter: saturate(120%) brightness(1.05);
+}
+
+/* Layer23 adicional à esquerda (efeito “spark”) */
+#real-estate-3d .bg-spark{
+  position:absolute;
+  left: var(--spark-left);
+  top:  var(--spark-top);
+  width: var(--spark-w);
+  height:auto;
+  opacity: var(--spark-opacity);
+  mix-blend-mode: screen;
+  z-index:1;                /* atrás do prédio, acima do fundo */
+  pointer-events:none;
+}
+
+/* Layer23 no cartão de estado (mantém) – caminho correto */
+#real-estate-3d .status-card::before{
+  content:"";
+  position:absolute; inset:-2px; z-index:-1;
+  border-radius:inherit;
+  background:
+    url("/wp-content/themes/lucrar-hello-child/real-estate/assets/Layer23.png") center/cover no-repeat,
+    radial-gradient(120% 120% at 100% 0%, rgba(239,215,160,.15), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.08), transparent 40%),
+    rgba(10,14,18,.45);
+}
+
+/* Responsivo: ajusta ligeiramente para não invadir o card */
+@media (max-width:1024px){
+  #real-estate-3d{
+    --leaf-w: 26vw;
+    --spark-left: -18%;
+    --spark-top:    8%;
+    --spark-w:     38vw;
+  }
+}
+@media (max-width:640px){
+  #real-estate-3d{
+    --leaf-left: -10%;
+    --leaf-top:   22%;
+    --leaf-w:     28vw;
+    --spark-left: -28%;
+    --spark-top:   22%;
+    --spark-w:     32vw;
+  }
+}
+
+
+
+/* Folha (image005) – preset “original/contido” */
+#real-estate-3d{
+  /* valores pequenos como tinhas inicialmente */
+  --leaf-left: 0%;
+  --leaf-top: -4%;
+  --leaf-w: 8vw;          /* discreto; podes subir p/ 12–16vw se quiseres maior */
+  --leaf-opacity: .18;    /* .18–.25 fica bem */
+}
+
+/* regra da folha (usa as variáveis acima) */
+#real-estate-3d .bg-leaf{
+  position:absolute;
+  left: var(--leaf-left);
+  top: var(--leaf-top);
+  width: var(--leaf-w);
+  height:auto;
+  max-width:none;         /* não deixar o Elementor encolher */
+  opacity: var(--leaf-opacity);
+  z-index: 1;
+  pointer-events:none;
+}
+
+/* se quiseres que não saia do “palco”, volta a fechar o palco */
+#real-estate-3d .stage{ overflow:hidden; }
+
+
+
+/* --- Garantir Akrobat no título --- */
+
+/* 1) Mapear os ficheiros que EXISTEM no servidor  */
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Bold.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Bold.woff2") format("woff2");
+  font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Akrobat";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/Akrobat-Black.woff2") format("woff2");
+  font-weight:800; font-style:normal; font-display:swap;
+}
+
+/* 2) Forçar a família no H2 (evita overrides do tema/Elementor) */
+#real-estate-3d .title h2{
+  font-family:"Akrobat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight:700;   /* usa Bold, que tens no servidor */
+  letter-spacing:.2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* === Segoe Print (web) === */
+@font-face{
+  font-family:"Segoe Print Web";
+  src:url("/wp-content/themes/lucrar-hello-child/assets/fonts/segoepr.woff2") format("woff2"),
+      url("/wp-content/themes/lucrar-hello-child/assets/fonts/segoepr.ttf")   format("truetype");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+
+/* Estilo "handwritten" para o texto curvo */
+#real-estate-3d .re-hand{
+  font-family:"Segoe Print Web","Segoe Print",cursive !important;
+  font-weight:400;
+  letter-spacing:.4px;
+  fill: var(--accent); /* usa a tua cor dourada */
+}
+
+/* Bloco do texto curvo (posiciona como a antiga .note .pos) */
+#real-estate-3d .note-curve.pos{
+  --x: var(--note-x);
+  --y: var(--note-y);
+  width: clamp(200px, 17vw, 300px);
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.45));
+}
+
+/* Pequena “borda” para legibilidade no fundo escuro */
+#real-estate-3d .note-curve text{
+  paint-order: stroke fill;
+  stroke: rgba(0,0,0,.35);
+  stroke-width: 1.2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === Leaf + Glow — sem bleed, sem scroll, a meio da secção === */
+
+/* Não duplicar versões antigas */
+#real-estate-3d .bg-leaf,
+#real-estate-3d .bg-spark{ display:none !important; }
+#real-estate-3d .stage::before,
+#real-estate-3d .stage::after{ content:none !important; }
+
+/* Nunca ter scroll horizontal por arredondamentos */
+html, body, .lcr-project{ overflow-x: clip; }
+
+/* Secção e palco */
+#real-estate-3d{
+  position: relative;
+  z-index: 2;
+
+  /* POSIÇÕES base (desktop) — empurradas para ~meio */
+  --glow-x: 0%;
+  --glow-y: 66%;   /* ↓ mais para baixo */
+  --leaf-x: 0%;
+  --leaf-y: 60%;
+
+  /* largura default do note */
+  --note-max: 500px;
+}
+#real-estate-3d .stage{
+  position: relative;
+  overflow: visible !important;
+  isolation: isolate;
+  contain: paint;                 /* impede fugas que criem scroll */
+}
+
+/* GLOW (Layer23) */
+#real-estate-3d::before{
+  content:"";
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background: no-repeat url("/wp-content/themes/lucrar-hello-child/real-estate/assets/Layer23.png");
+  background-size: clamp(280px, 30vw, 520px) auto;  /* mantido */
+  background-position: var(--glow-x) var(--glow-y);
+  opacity:.8; mix-blend-mode:screen;
+  filter:saturate(120%) brightness(1.05);
+}
+
+/* FOLHA (image005) */
+#real-estate-3d::after{
+  content:"";
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+  background: no-repeat url("/wp-content/themes/lucrar-hello-child/real-estate/assets/image005copy.png");
+  background-size: clamp(80px, 12vw, 150px) auto;   /* mantido */
+  background-position: var(--leaf-x) var(--leaf-y);
+  opacity:.40; filter:saturate(115%) brightness(1.03);
+}
+
+/* Tablet */
+@media (max-width:1024px){
+  #real-estate-3d{
+    --glow-y: 62%;
+    --leaf-y: 58%;
+  }
+}
+
+/* Mobile */
+@media (max-width:640px){
+  #real-estate-3d{
+    --glow-y: 58%;
+    --leaf-y: 54%;
+  }
+}
+
+/* NOTE menor apenas quando viewport ≤ 500px */
+@media (max-width:500px){
+  #real-estate-3d{ --note-max: 190px; }             /* pediste menor */
+  #real-estate-3d .note-curve.pos{
+    width: min(var(--note-max), 60vw);
+    max-width: var(--note-max);
+  }
+  #real-estate-3d .note-curve .re-hand{
+    font-size: 22px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Remover o glow do card */
+#real-estate-3d .status-card::before{
+  content: none !important;   /* elimina o pseudo-elemento com o Layer23/gradientes */
+  background: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Leaf responsivo (só .bg-leaf) — desce em ecrãs menores ===== */
+
+/* sem scroll interno + sem pseudo-fundos */
+#real-estate-3d, #real-estate-3d-pt,
+#real-estate-3d .stage, #real-estate-3d-pt .stage{
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+#real-estate-3d::before,#real-estate-3d::after,
+#real-estate-3d-pt::before,#real-estate-3d-pt::after{ content:none !important; }
+
+/* títulos = from-scratch */
+.lcr-project{ --fs-size: var(--title-size) !important; }
+.lcr-project .title h2,
+.lcr-project .from.pos span{
+  font-family:"Akrobat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight:800 !important;
+  letter-spacing:.3px; line-height:1.02; color:var(--accent);
+  font-size: var(--title-size) !important;
+}
+
+/* garantir decor */
+#real-estate-3d .bg-leaf, #real-estate-3d-pt .bg-leaf{
+  position:absolute !important;
+  display:block !important;
+  pointer-events:none !important;
+  max-width:none !important;
+  filter:none !important; mix-blend-mode:normal !important;
+  z-index:1 !important;
+}
+
+/* BASE (desktop) — ajusta só estes 3 se precisares */
+#real-estate-3d, #real-estate-3d-pt{
+  --leaf-w: 20vw;     /* largura */
+  --leaf-left: 0%;    /* horizontal */
+  --leaf-top: -6%;    /* vertical (negativo = mais acima) */
+  --leaf-opacity: .68;
+}
+#real-estate-3d .bg-leaf, #real-estate-3d-pt .bg-leaf{
+  width: var(--leaf-w) !important;
+  left: var(--leaf-left) !important;
+  top:  var(--leaf-top) !important;
+  opacity: var(--leaf-opacity) !important;
+}
+
+/* BREAKPOINTS — a cada passo o leaf fica mais pequeno e DESCE */
+@media (max-width:2400px){ #real-estate-3d, #real-estate-3d-pt{ --leaf-w:9vw; --leaf-top:-4%; } }
+@media (max-width:1200px){ #real-estate-3d, #real-estate-3d-pt{ --leaf-w:5vw; --leaf-top:-2%; } }
+@media (max-width:1024px){ #real-estate-3d, #real-estate-3d-pt{ --leaf-w:12vw; --leaf-top: 0%; } }
+@media (max-width:900px) { #real-estate-3d, #real-estate-3d-pt{ --leaf-w:12vw; --leaf-top: 2%; } }
+@media (max-width:780px) { #real-estate-3d, #real-estate-3d-pt{ --leaf-w:11vw; --leaf-top: 4%; } }
+@media (max-width:640px) { #real-estate-3d, #real-estate-3d-pt{ --leaf-w:12vw; --leaf-top: 12%; } }
+@media (max-width:560px) { #real-estate-3d, #real-estate-3d-pt{ --leaf-w: 12vw; --leaf-top: 15%; } }
+@media (max-width:480px) { #real-estate-3d, #real-estate-3d-pt{ --leaf-w: 10vw; --leaf-top: 15%; } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====== Anti-corte (wrappers) ====== */
+/* Deixa sangrar dentro dos wrappers do Elementor desta secção */
+#real-estate-3d, #real-estate-3d-pt,
+#real-estate-3d .stage, #real-estate-3d-pt .stage,
+#real-estate-3d .elementor-container, #real-estate-3d-pt .elementor-container,
+#real-estate-3d .elementor-row,       #real-estate-3d-pt .elementor-row,
+#real-estate-3d .elementor-column,    #real-estate-3d-pt .elementor-column,
+#real-estate-3d .elementor-widget-wrap, #real-estate-3d-pt .elementor-widget-wrap{
+  overflow: visible !important;
+}
+
+/* ====== Leaf (.bg-leaf): mantém os teus valores e só “empurra” para baixo onde cortar ====== */
+#real-estate-3d, #real-estate-3d-pt{
+  --leaf-nudge-y: 0%;   /* empurrão vertical extra; 0 por omissão */
+}
+
+/* aplica o nudge sem mexer em --leaf-top/--leaf-w que já definiste */
+#real-estate-3d .bg-leaf, #real-estate-3d-pt .bg-leaf{
+  transform: translateY(var(--leaf-nudge-y)) !important;
+  will-change: transform;
+}
+
+/* —— Ajustes finos só quando costuma cortar —— */
+@media (max-width: 2900px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 3%; }
+}
+@media (max-width: 1100px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 3%; }
+}
+@media (max-width: 980px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 4.5%; }
+}
+@media (max-width: 900px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 6%; }
+}
+@media (max-width: 780px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 7%; }
+}
+@media (max-width: 640px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 8.5%; }
+}
+@media (max-width: 560px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 10%; }
+}
+@media (max-width: 480px){
+  #real-estate-3d, #real-estate-3d-pt{ --leaf-nudge-y: 11%; }
+}
