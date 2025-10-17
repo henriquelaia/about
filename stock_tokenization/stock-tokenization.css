@@ -332,6 +332,7 @@
   text-decoration: underline;
   text-underline-offset: 3px;
   cursor: pointer;
+  pointer-events: auto; /* Garante que o link dentro do texto é clicável */
 }
 
 /* LABELS CURVAS */
@@ -342,7 +343,7 @@
   width: 100%;
   height: 100%;
   z-index: 3;
-  pointer-events: none; /* Alterado para none por defeito */
+  pointer-events: none; /* SVG não bloqueia cliques por defeito */
 }
 .st-note path {
   stroke: none !important;
@@ -360,7 +361,7 @@
 }
 /* Garante que links no SVG são clicáveis */
 #stock-tokenization-pt .st-note a { pointer-events: auto; }
-#open-lcr-modal{ cursor:pointer !important; pointer-events:auto !important; }
+#open-lcr-modal { cursor: pointer !important; pointer-events: auto !important; }
 
 /* SLIDER (artigos) */
 .st-articles {
@@ -877,6 +878,7 @@
   }
 }
 
+
 /* Mobile Breakpoints: Redução adicional do saco */
 
 /* ≤392 */
@@ -1116,10 +1118,6 @@
     --call-text-right-gap: 46px;
   }
 }
-
-
-/* Restante dos breakpoints maiores (≥681) mantidos como estavam antes, apenas com ajustes nas setas/labels e card grow */
-/* Omitido por brevidade, mas os ajustes de --aX-*, --tX-* e --call-grow* foram aplicados */
 
 /* 681–720 */
 @media (min-width: 681px) and (max-width: 720px) {
@@ -1724,596 +1722,6 @@
   }
 }
 
-/* Restante do CSS (micro-breakpoints, modal, galeria, etc.) omitido para brevidade, pois não foi alterado */
-
-/* ... (restante do CSS como no ficheiro original) ... */
-
-/* --- MODIFICADO: Manda o card para trás do saco ---  -> COMENTÁRIO desatualizado */
-/* #stock-tokenization-pt .st-call { */
-  /* z-index: 1 !important; -> Removido, z-index é controlado pela variável --call-z */
-/* } */
-/* Pointer events mantidos para garantir cliques nos links SVG */
-#stock-tokenization-pt .st-note { pointer-events: none; }
-#stock-tokenization-pt .st-note a { pointer-events: auto; }
-#open-lcr-modal { cursor: pointer !important; pointer-events: auto !important; }
-
-/* (bónus) pequeno fix no modal externo, havia "display: relative" */
-#lcr-swap-modal .modal-content { position: relative; }
-
-/* ... (restante do CSS como no ficheiro original) ... */
-
-    --sub-size: clamp(12.5px, 4vw, 17px);
-    --h2-size: clamp(16px, 7.2vw, 20px);
-
-    --bag-w: 65vw; /* MODIFICADO: Reduzido de 72vw */
-
-    --a1-left: 8%;
-    --a1-top: 20%;
-    --a1-w: 44%;
-    --a4-left: 72%;
-    --a4-top: 16%;
-    --a4-w: 12%;
-    --a3-left: 16%;
-    --a3-top: 16%;
-    --a3-w: 12%;
-    --a2-left: 69%;
-    --a2-top: 46%;
-    --a2-w: 15%;
-    --a2-rot: -10deg;
-
-    --t1-x: 90;
-    --t1-y: 180;
-    --t1-len: 500;
-    --t1-arc: 160;
-    --t1-size: 20;
-    --t1-dx: -10;
-    --t2-x: 770;
-    --t2-y: 160;
-    --t2-len: 500;
-    --t2-arc: 120;
-    --t2-size: 20;
-    --t2-dx: 8;
-    --t2-dy: 6;
-    --t3-x: 798;
-    --t3-y: 300;
-    --t3-len: 360;
-    --t3-arc: 120;
-    --t3-size: 16;
-    --t3-dx: 8;
-    --t3-dy: 6;
-
-    --call-left: 70%;
-    --call-top: 105%;
-    --callout-w: 190px;
-    --call-growX: 20px; /* MODIFICADO: Reduzido de 30px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 145px */
-    --call-growY-bot: 6px;
-    --call-text-right-gap: 36px;
-    --call-text-gap: 10px;
-
-    --cards: 1;
-    --slider-padX: 60px;
-    --slider-fade-w: 40px;
-  }
-}
-
-/* 521–580 */
-@media (min-width: 521px) and (max-width: 580px) {
-  #stock-tokenization-pt {
-    --wrap-w: 94vw;
-    --topbar-h: 34vw;
-
-    --logo-w: 48px;
-    --logo-x-cur: 0%;
-    --logo-tx: -80%;
-    --logo-y-cur: 0px;
-    --logo-ty: -26px;
-
-    --title-size: clamp(21px, 8.2vw, 28px);
-    --since-size: 11px;
-    --title-shift: -5px;
-    --sub-size: clamp(12.5px, 4vw, 17px);
-    --h2-size: clamp(16px, 7.2vw, 20px);
-
-    --bag-w: 65vw; /* MODIFICADO: Reduzido de 72vw */
-
-    --a1-left: 8%;
-    --a1-top: 20%;
-    --a1-w: 44%;
-    --a4-left: 72%;
-    --a4-top: 16%;
-    --a4-w: 12%;
-    --a3-left: 16%;
-    --a3-top: 16%;
-    --a3-w: 12%;
-    --a2-left: 69%;
-    --a2-top: 46%;
-    --a2-w: 15%;
-    --a2-rot: -10deg;
-
-    --t1-x: 90;
-    --t1-y: 180;
-    --t1-len: 500;
-    --t1-arc: 160;
-    --t1-size: 20;
-    --t1-dx: -10;
-    --t2-x: 770;
-    --t2-y: 160;
-    --t2-len: 500;
-    --t2-arc: 120;
-    --t2-size: 20;
-    --t2-dx: 8;
-    --t2-dy: 6;
-    --t3-x: 798;
-    --t3-y: 300;
-    --t3-len: 360;
-    --t3-arc: 120;
-    --t3-size: 16;
-    --t3-dx: 8;
-    --t3-dy: 6;
-
-    --call-left: 70%;
-    --call-top: 102%;
-    --callout-w: 190px;
-    --call-growX: 20px; /* MODIFICADO: Reduzido de 45px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 140px */
-    --call-growY-bot: 12px;
-    --call-text-right-gap: 46px;
-
-    --cards: 1;
-    --slider-padX: 70px;
-    --slider-fade-w: 40px;
-  }
-}
-
-/* 581–640 */
-@media (min-width: 581px) and (max-width: 680px) {
-  #stock-tokenization-pt {
-    --wrap-w: 94vw;
-    --topbar-h: 34vw;
-
-    --logo-w: 60px;
-    --logo-x-cur: 0%;
-    --logo-tx: -32%;
-    --logo-y-cur: 15px;
-    --logo-ty: -39px;
-
-    --title-size: clamp(21px, 8.2vw, 28px);
-    --since-size: 11px;
-    --title-shift: -5px;
-    --sub-size: clamp(12.5px, 4vw, 17px);
-    --h2-size: clamp(16px, 7.2vw, 20px);
-
-    --bag-w: 65vw; /* MODIFICADO: Reduzido de 72vw */
-
-    --a1-left: 12%;
-    --a1-top: 20%;
-    --a1-w: 43%;
-    --a4-left: 72%;
-    --a4-top: 16%;
-    --a4-w: 12%;
-    --a3-left: 16%;
-    --a3-top: 16%;
-    --a3-w: 12%;
-    --a2-left: 69%;
-    --a2-top: 46%;
-    --a2-w: 15%;
-    --a2-rot: -10deg;
-
-    --t1-x: 90;
-    --t1-y: 180;
-    --t1-len: 500;
-    --t1-arc: 160;
-    --t1-size: 20;
-    --t1-dx: -10;
-    --t2-x: 770;
-    --t2-y: 160;
-    --t2-len: 500;
-    --t2-arc: 120;
-    --t2-size: 20;
-    --t2-dx: 8;
-    --t2-dy: 6;
-    --t3-x: 798;
-    --t3-y: 300;
-    --t3-len: 360;
-    --t3-arc: 120;
-    --t3-size: 16;
-    --t3-dx: 8;
-    --t3-dy: 6;
-
-    --call-left: 70%;
-    --call-top: 102%;
-    --callout-w: 190px;
-    --call-growX: 20px; /* MODIFICADO: Reduzido de 60px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 150px */
-    --call-growY-bot: 12px;
-    --call-text-right-gap: 46px;
-
-    --cards: 1;
-    --slider-padX: 80px;
-    --slider-fade-w: 40px;
-  }
-}
-
-/* 393–430 */
-@media (min-width: 393px) and (max-width: 430px) {
-  #stock-tokenization-pt {
-    --wrap-w: 94vw;
-    --topbar-h: 34vw;
-
-    --logo-w: 48px;
-    --logo-x-cur: -25%;
-    --logo-tx: 0%;
-    --logo-y-cur: -50px;
-    --logo-ty: 0px;
-
-    --title-size: clamp(21px, 8.2vw, 28px);
-    --since-size: 11px;
-    --title-shift: -5px;
-    --sub-size: clamp(12.5px, 4vw, 17px);
-    --h2-size: clamp(16px, 7.2vw, 20px);
-
-    --bag-w: 65vw; /* MODIFICADO: Reduzido de 72vw */
-
-    --a1-left: 5%;
-    --a1-top: 20%;
-    --a1-w: 44%;
-
-    /* --a1-left: 12%;
-    --a1-top: 20%;
-    --a1-w: 38%; */
-    --a4-left: 72%;
-    --a4-top: 16%;
-    --a4-w: 12%;
-    --a3-left: 16%;
-    --a3-top: 16%;
-    --a3-w: 12%;
-    --a2-left: 68%;
-    --a2-top: 45%;
-    --a2-w: 15%;
-    --a2-rot: -10deg;
-
-    --t1-x: 100;
-    --t1-y: 180;
-    --t1-len: 500;
-    --t1-arc: 160;
-    --t1-size: 20;
-    --t1-dx: -6;
-    --t2-x: 760;
-    --t2-y: 160;
-    --t2-len: 500;
-    --t2-arc: 120;
-    --t2-size: 20;
-    --t2-dx: 6;
-    --t2-dy: 6;
-    --t3-x: 790;
-    --t3-y: 300;
-    --t3-len: 360;
-    --t3-arc: 120;
-    --t3-size: 15;
-    --t3-dx: 6;
-    --t3-dy: 6;
-
-    --call-left: 70%;
-    --call-top: 104%;
-    --callout-w: 190px;
-    --call-growX: 15px; /* MODIFICADO: Reduzido de 20px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 120px */
-    --call-growY-bot: 12px;
-    --call-text-right-gap: 16px;
-
-    --cards: 1;
-    --slider-padX: 60px;
-    --slider-fade-w: 40px;
-  }
-}
-
-/* ≤392 */
-@media (max-width: 392px) {
-  #stock-tokenization-pt {
-    --wrap-w: 94vw;
-    --topbar-h: 34vw;
-
-    --logo-w: 45px;
-    --logo-x-cur: -29%;
-    --logo-tx: 0%;
-    --logo-y-cur: -50px;
-    --logo-ty: 0px;
-
-    --title-size: clamp(20px, 8.5vw, 26px);
-    --since-size: 11px;
-    --since-offset: 1.2em;
-    --title-shift: -4px;
-    --sub-size: clamp(12px, 4.1vw, 1px);
-    --h2-size: clamp(15px, 7vw, 15px);
-    --call-font-size: 12px;
-
-    --bag-w: 64vw; /* MODIFICADO: Reduzido de 70vw */
-    --a1-left: 10%;
-    --a1-top: 20%;
-    --a1-w: 44%;
-    --a4-left: 73%;
-    --a4-top: 16%;
-    --a4-w: 12%;
-    --a3-left: 16%;
-    --a3-top: 16%;
-    --a3-w: 12%;
-    --a2-left: 68%;
-    --a2-top: 45%;
-    --a2-w: 15%;
-    --a2-rot: -10deg;
-
-    --t1-x: 100;
-    --t1-y: 180;
-    --t1-len: 500;
-    --t1-arc: 160;
-    --t1-size: 20;
-    --t1-dx: -6;
-    --t2-x: 760;
-    --t2-y: 160;
-    --t2-len: 500;
-    --t2-arc: 120;
-    --t2-size: 20;
-    --t2-dx: 6;
-    --t2-dy: 6;
-    --t3-x: 790;
-    --t3-y: 300;
-    --t3-len: 360;
-    --t3-arc: 120;
-    --t3-size: 15;
-    --t3-dx: 6;
-    --t3-dy: 6;
-
-    --call-left: 70%;
-    --call-top: 105%;
-    --callout-w: 190px;
-    --call-growX: 10px;
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 116px */
-    --call-growY-bot: 12px;
-    --call-text-right-gap: 17px;
-
-    --cards: 1;
-    --slider-padX: 60px;
-    --slider-fade-w: 40px;
-  }
-}
-
-/* ===== SUPER-DESKTOPS ===== */
-/* ≥1439 & <1920 */
-@media (min-width: 1439px) and (max-width: 1919px) {
-  #stock-tokenization-pt {
-    --topbar-h: 32vw;
-    --brand-padY: 24px;
-
-    --logo-w: 158px;
-    --logo-x-cur: 160px;
-    --logo-y-cur: 92px;
-    --logo-x-adj: 0px;
-    --logo-y-adj: 0px;
-    --logo-tx: 235px;
-    --logo-ty: 90px;
-
-    --title-size: clamp(34px, 4.8vw, 58px);
-    --sub-size: clamp(17px, 2vw, 21px);
-    --h2-size: clamp(26px, 3.2vw, 40px);
-
-    --bag-w: min(46vw, 470px); /* MODIFICADO: Reduzido de min(52vw, 520px) */
-
-    --a1-left: 14%;
-    --a1-top: 20%;
-    --a1-w: 26%;
-    --a4-left: 66%;
-    --a4-top: 16%;
-    --a4-w: 9%;
-    --a3-left: 27%;
-    --a3-top: 18%;
-    --a3-w: 10%;
-    --a2-left: 63%;
-    --a2-top: 34%;
-    --a2-w: 9%;
-
-    --t1-x: 170;
-    --t1-y: 196;
-    --t1-len: 500;
-    --t1-arc: 180;
-    --t1-size: 20;
-    --t1-dx: -28;
-    --t2-x: 705;
-    --t2-y: 132;
-    --t2-len: 480;
-    --t2-arc: 136;
-    --t2-size: 18;
-    --t2-dx: 20;
-    --t2-dy: 14;
-    --t3-x: 730;
-    --t3-y: 289;
-    --t3-len: 500;
-    --t3-arc: 136;
-    --t3-size: 18;
-    --t3-dx: 22;
-    --t3-dy: 14;
-
-    --call-left: 77%;
-    --call-top: 96%;
-    --callout-w: 290px;
-    --call-growX: 25px; /* MODIFICADO: Reduzido de 90px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 200px */
-    --call-growY-bot: 15px; /* MODIFICADO: Reduzido de 14px */
-    --call-text-right-gap: 70px;
-    --call-text-gap: 10px;
-
-    --cards: 2;
-    --slider-padX: 78px;
-    --slider-fade-w: 56px;
-  }
-}
-
-/* ≥1920 & <2560 */
-@media (min-width: 1919px) and (max-width: 2559px) {
-  #stock-tokenization-pt {
-    --topbar-h: 32vw;
-    --brand-padY: 24px;
-
-    --logo-w: 208px;
-    --logo-x-cur: 160px;
-    --logo-y-cur: 92px;
-    --logo-x-adj: 0px;
-    --logo-y-adj: 0px;
-    --logo-tx: 355px;
-    --logo-ty: 110px;
-
-    --title-size: clamp(34px, 4.8vw, 58px);
-    --sub-size: clamp(17px, 2vw, 21px);
-    --h2-size: clamp(26px, 3.2vw, 40px);
-
-    --bag-w: min(46vw, 470px); /* MODIFICADO: Reduzido de min(52vw, 520px) */
-
-    --a1-left: 14%;
-    --a1-top: 20%;
-    --a1-w: 25%;
-    --a4-left: 66%;
-    --a4-top: 16%;
-    --a4-w: 9%;
-    --a3-left: 26%;
-    --a3-top: 16%;
-    --a3-w: 10%;
-    --a2-left: 63%;
-    --a2-top: 34%;
-    --a2-w: 9%;
-
-    --t1-x: 200;
-    --t1-y: 186;
-    --t1-len: 500;
-    --t1-arc: 180;
-    --t1-size: 20;
-    --t1-dx: -28;
-    --t2-x: 700;
-    --t2-y: 132;
-    --t2-len: 480;
-    --t2-arc: 136;
-    --t2-size: 18;
-    --t2-dx: 20;
-    --t2-dy: 14;
-    --t3-x: 730;
-    --t3-y: 289;
-    --t3-len: 500;
-    --t3-arc: 136;
-    --t3-size: 18;
-    --t3-dx: 22;
-    --t3-dy: 14;
-
-    --call-left: 77%;
-    --call-top: 96%;
-    --callout-w: 290px;
-    --call-growX: 25px; /* MODIFICADO: Reduzido de 90px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 200px */
-    --call-growY-bot: 15px; /* MODIFICADO: Reduzido de 14px */
-    --call-text-right-gap: 70px;
-    --call-text-gap: 10px;
-
-    --cards: 2;
-    --slider-padX: 78px;
-    --slider-fade-w: 56px;
-  }
-}
-
-/* ≥2560 (4K) */
-@media (min-width: 2559px) {
-  #stock-tokenization-pt {
-    --topbar-h: 32vw;
-    --brand-padY: 24px;
-
-    --logo-w: 228px;
-    --logo-x-cur: 160px;
-    --logo-y-cur: 92px;
-    --logo-x-adj: 0px;
-    --logo-y-adj: 0px;
-    --logo-tx: 625px;
-    --logo-ty: 220px;
-
-    --title-size: clamp(34px, 4.8vw, 58px);
-    --sub-size: clamp(17px, 2vw, 21px);
-    --h2-size: clamp(26px, 3.2vw, 40px);
-
-    --bag-w: min(46vw, 470px); /* MODIFICADO: Reduzido de min(52vw, 520px) */
-
-    --a1-left: 14%;
-    --a1-top: 18%;
-    --a1-w: 26%;
-    --a4-left: 66%;
-    --a4-top: 16%;
-    --a4-w: 9%;
-    --a3-left: 27%;
-    --a3-top: 15%;
-    --a3-w: 10%;
-    --a2-left: 63%;
-    --a2-top: 34%;
-    --a2-w: 9%;
-
-    --t1-x: 200;
-    --t1-y: 186;
-    --t1-len: 500;
-    --t1-arc: 180;
-    --t1-size: 20;
-    --t1-dx: -28;
-    --t2-x: 680;
-    --t2-y: 132;
-    --t2-len: 480;
-    --t2-arc: 136;
-    --t2-size: 18;
-    --t2-dx: 20;
-    --t2-dy: 14;
-    --t3-x: 730;
-    --t3-y: 289;
-    --t3-len: 500;
-    --t3-arc: 136;
-    --t3-size: 18;
-    --t3-dx: 22;
-    --t3-dy: 14;
-
-    --call-left: 77%;
-    --call-top: 96%;
-    --callout-w: 290px;
-    --call-growX: 25px; /* MODIFICADO: Reduzido de 90px */
-    --call-growY-top: 15px; /* MODIFICADO: Reduzido de 200px */
-    --call-growY-bot: 15px; /* MODIFICADO: Reduzido de 14px */
-    --call-text-right-gap: 70px;
-    --call-text-gap: 10px;
-
-    --cards: 2;
-    --slider-padX: 78px;
-    --slider-fade-w: 56px;
-  }
-}
-
-/* ===== AJUSTE FINO: iPad landscape (1024 exato) ===== */
-@media (width: 1024px) {
-  #stock-tokenization-pt {
-    --t1-x: 120;
-    --t1-y: 200;
-    --t1-len: 490;
-    --t1-arc: 170;
-    --t1-size: 19;
-    --t1-dx: -18;
-    --t2-x: 750;
-    --t2-y: 172;
-    --t2-len: 470;
-    --t2-arc: 132;
-    --t2-size: 18;
-    --t2-dx: 16;
-    --t2-dy: 12;
-    --t3-x: 770;
-    --t3-y: 320;
-    --t3-len: 490;
-    --t3-arc: 132;
-    --t3-size: 18;
-    --t3-dx: 18;
-    --t3-dy: 12;
-
-    --call-left: 72.5%;
-    --call-top: 95.5%;
-  }
-}
 
 /* ---------- MICRO-BREAKPOINTS (±10px dos cortes) ---------- */
 /* evitam “descolar” do logo do título nas larguras-limite */
@@ -2457,12 +1865,13 @@ body.st-modal-open {
   background: var(--st-glass);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-  overflow: hidden;
+  overflow: hidden; /* Mantido para conter o diálogo */
 }
 .st-body {
   position: relative;
   height: var(--modal-content-h, min(78vh, 760px));
   padding: 0;
+  overflow: hidden; /* Adicionado para conter galeria se necessário */
 }
 .st-iframe {
   display: block;
@@ -2489,7 +1898,7 @@ body.st-modal-open {
   position: absolute;
   right: 14px;
   top: 12px;
-  z-index: 2;
+  z-index: 10; /* Aumentado para garantir visibilidade sobre a galeria */
   width: 46px;
   height: 46px;
   border-radius: 999px;
@@ -2526,364 +1935,10 @@ body.st-modal-open {
   animation: stPulse 2.8s ease-in-out infinite;
 }
 
-/* Galeria */
-.st-gallery {
-  position: relative;
-  min-height: 60vh;
-  display: block;
-}
-.st-g-wrap {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 60vh;
-  padding: 20px 24px 36px;
-}
-.st-g-img {
-  max-width: 92%;
-  max-height: 70vh;
-  display: block;
-  border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-  transition: opacity 0.28s ease, transform 0.38s cubic-bezier(0.2, 0.7, 0.2, 1);
-  opacity: 1;
-  transform: scale(1);
-}
-.st-g-img.is-changing {
-  opacity: 0;
-  transform: scale(0.985);
-}
-.st-g-img:hover {
-  transform: scale(1.015);
-}
-.st-g-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  border: 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: background 0.2s, transform 0.2s, opacity 0.2s;
-  color: transparent;
-}
-.st-g-nav::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border-top: 3px solid rgba(255, 255, 255, 0.98);
-  border-right: 3px solid rgba(255, 255, 255, 0.98);
-  transform: translate(-50%, -50%) rotate(45deg);
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
-}
-.st-g-prev {
-  left: 24px;
-}
-.st-g-prev::after {
-  transform: translate(-50%, -50%) rotate(225deg);
-}
-.st-g-next {
-  right: 24px;
-}
-.st-gallery:hover .st-g-nav {
-  opacity: 1;
-}
-.st-g-nav:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(54, 251, 161, 0.95),
-    rgba(12, 143, 82, 0.95)
-  );
-  transform: translateY(-50%) scale(1.04);
-}
-.st-g-nav:active {
-  transform: translateY(-50%) scale(0.98);
-}
-.st-g-dots {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 14px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-}
-.st-g-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #7b8493;
-  opacity: 0.85;
-  border: 2px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 0 0 rgba(54, 251, 161, 0);
-  transition: transform 0.18s, background 0.2s, box-shadow 0.3s;
-  cursor: pointer;
-}
-.st-g-dot[aria-current="true"] {
-  background: linear-gradient(135deg, var(--st-accent1), var(--st-accent2));
-  box-shadow: 0 0 0 4px rgba(54, 251, 161, 0.15);
-  transform: scale(1.25);
-}
-.st-g-dot:hover {
-  transform: scale(1.15);
-}
+/* --- (bónus) pequeno fix no modal externo, havia "display: relative" --- */
+#lcr-swap-modal .modal-content { position: relative; }
 
-/* Acessibilidade */
-.sr-only {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ====== GALERIA — CENTRADO + PALETA PRETO/BRANCO/VERDE ====== */
-:root{
-  --st-accent1:#36fba1;  /* verde do botão */
-  --st-accent2:#0c8f52;
-  --st-dark:rgba(0,0,0,.34);
-  --st-dark-2:rgba(0,0,0,.52);
-  --st-ring:rgba(255,255,255,.18);
-}
-
-/* ----- layout sempre centrado ----- */
-.st-dialog{
-  left:50%; top:50%; transform:translate(-50%,-50%); /* garante centro absoluto */
-}
-.st-g-wrap{
-  display:grid; place-items:center;                  /* centra imagem */
-  padding:20px 24px 42px;
-}
-.st-g-img{
-  margin:0 auto;                                     /* centra horizontal */
-  max-width:min(92%, 1200px);
-}
-
-/* ----- setas (< >) pretas translúcidas, chevron branco e hover verde ----- */
-.st-g-nav{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:58px; height:58px; border-radius:16px;
-  background:var(--st-dark) !important;
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 10px 28px rgba(0,0,0,.35);
-  display:grid; place-items:center;
-  color:transparent;                                  /* esconde qualquer texto */
-  transition:background .18s, transform .18s, box-shadow .18s, border-color .18s;
-}
-.st-g-prev{ left:24px; }
-.st-g-next{ right:24px; }
-
-.st-g-nav::after{
-  content:"";
-  width:18px; height:18px;
-  border-top:3px solid #fff;                          /* branco */
-  border-right:3px solid #fff;
-  transform:translate(0,0) rotate(45deg);
-}
-.st-g-prev::after{ transform:rotate(225deg); }
-
-.st-g-nav:hover{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2)) !important;
-  border-color:rgba(255,255,255,.22);
-  transform:translateY(-50%) scale(1.05);
-  box-shadow:0 0 0 4px rgba(54,251,161,.12), 0 10px 28px rgba(0,0,0,.35);
-}
-.st-g-nav:hover::after{
-  border-color:#0b1217;                               /* chevron preto sobre o verde */
-}
-.st-g-nav:active{ transform:translateY(-50%) scale(.98); }
-.st-g-nav:focus-visible{
-  outline:0; box-shadow:0 0 0 3px rgba(255,255,255,.22), 0 10px 28px rgba(0,0,0,.35);
-}
-
-/* ----- bolinhas pretas translúcidas; ativo em verde ----- */
-.st-g-dots{ bottom:16px; gap:10px; justify-content:center; }
-.st-g-dot{
-  width:12px; height:12px; border-radius:999px;
-  background:rgba(0,0,0,.45);
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 2px 8px rgba(0,0,0,.25);
-  transition:transform .16s, background .16s, box-shadow .16s;
-  cursor:pointer;
-}
-.st-g-dot:hover{ background:var(--st-dark-2); transform:scale(1.12); }
-.st-g-dot[aria-current="true"]{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2));
-  box-shadow:0 0 0 4px rgba(54,251,161,.15), 0 2px 12px rgba(0,0,0,.30);
-  transform:scale(1.18);
-}
-.st-g-dot:focus-visible{
-  outline:0; box-shadow:0 0 0 3px rgba(255,255,255,.22), 0 2px 12px rgba(0,0,0,.30);
-}
-
-/* ----- botão fechar: circular centrado, base preta translúcida; hover verde e “X” preto ----- */
-.st-close{
-  right:14px; top:12px; width:46px; height:46px;
-  border-radius:999px; border:1px solid rgba(255,255,255,.16);
-  background:var(--st-dark);
-  box-shadow:0 10px 30px rgba(0,0,0,.45);
-  display:grid; place-items:center;
-  color:transparent; font-size:0; line-height:0;      /* esconde o “×” do HTML */
-  cursor:pointer; z-index:2;
-  transition:background .18s, transform .18s, box-shadow .18s, border-color .18s;
-}
-.st-modal[aria-hidden="false"] .st-close{ animation:none; } /* remove pulsar azul/verde */
-
-/* desenha o X perfeito e centrado */
-.st-close::before,
-.st-close::after{
-  content:""; position:absolute; width:22px; height:2.4px;
-  background:#fff; border-radius:2px;                 /* branco na base escura */
-}
-.st-close::before{ transform:rotate(45deg); }
-.st-close::after { transform:rotate(-45deg); }
-
-.st-close:hover{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2));
-  border-color:rgba(255,255,255,.22);
-  transform:scale(1.04);
-  box-shadow:0 0 0 6px rgba(54,251,161,.12), 0 10px 30px rgba(0,0,0,.45);
-}
-.st-close:hover::before,
-.st-close:hover::after{ background:#0b1217; }         /* X preto sobre o verde */
-
-.st-close:active{ transform:scale(.98); }
-.st-close:focus-visible{
-  outline:0; box-shadow:0 0 0 3px rgba(255,255,255,.22), 0 10px 30px rgba(0,0,0,.45);
-}
-
-/* === FORÇAR PALETA PRETO/BRANCO + VERDE E CENTRAR === */
-:root{
-  --st-accent1:#36fba1;
-  --st-accent2:#0c8f52;
-}
-
-/* Centro absoluto garantido */
-.st-modal .st-dialog{
-  left:50%; top:50%; transform:translate(-50%,-50%) !important;
-}
-
-/* ---------- SETAS ---------- */
-.st-modal .st-gallery .st-g-nav{
-  width:58px;height:58px;border-radius:16px;
-  background:rgba(0,0,0,.34) !important;
-  border:1px solid rgba(255,255,255,.16) !important;
-  box-shadow:0 10px 28px rgba(0,0,0,.35);
-  color:transparent;
-}
-.st-modal .st-gallery .st-g-nav:hover{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2)) !important;
-  transform:translateY(-50%) scale(1.05);
-}
-.st-modal .st-gallery .st-g-nav::after{
-  content:"";
-  position:absolute; left:50%; top:50%;
-  width:18px;height:18px; transform:translate(-50%,-50%) rotate(45deg);
-  border-top:3px solid #fff; border-right:3px solid #fff;
-}
-.st-modal .st-gallery .st-g-prev::after{ transform:translate(-50%,-50%) rotate(225deg); }
-.st-modal .st-gallery .st-g-nav:hover::after{ border-color:#0b1217; } /* chevron preto sobre verde */
-
-/* ---------- DOTS ---------- */
-.st-modal .st-gallery .st-g-dots{ bottom:16px; gap:10px; justify-content:center; }
-.st-modal .st-gallery .st-g-dot{
-  width:12px;height:12px;border-radius:999px; cursor:pointer;
-  background:rgba(0,0,0,.45) !important;                 /* preto translúcido */
-  border:1px solid rgba(255,255,255,.16) !important;
-  box-shadow:0 2px 8px rgba(0,0,0,.25);
-  transition:transform .16s, background .16s, box-shadow .16s;
-}
-.st-modal .st-gallery .st-g-dot:hover{
-  background:rgba(0,0,0,.62) !important; transform:scale(1.12);
-}
-.st-modal .st-gallery .st-g-dot[aria-current="true"]{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2)) !important;
-  box-shadow:0 0 0 4px rgba(54,251,161,.15) !important;
-  transform:scale(1.18);
-}
-
-/* ---------- IMAGEM CENTRADA ---------- */
-.st-modal .st-gallery .st-g-wrap{ display:grid; place-items:center; padding:20px 24px 42px; }
-.st-modal .st-gallery .st-g-img{ margin:0 auto; max-width:min(92%,1200px); }
-
-/* ---------- BOTÃO FECHAR (X) ---------- */
-.st-modal .st-dialog .st-close{
-  right:14px; top:12px; width:46px; height:46px; z-index:3;
-  border-radius:999px; border:1px solid rgba(255,255,255,.16) !important;
-  background:rgba(0,0,0,.34) !important;                /* base preta translúcida */
-  box-shadow:0 10px 30px rgba(0,0,0,.45);
-  color:transparent !important; font-size:0; line-height:0; /* esconde o “×” do HTML */
-}
-.st-modal[aria-hidden="false"] .st-close{ animation:none !important; } /* mata pulsar antigo */
-.st-modal .st-dialog .st-close::before,
-.st-modal .st-dialog .st-close::after{
-  content:""; position:absolute; width:22px; height:2.4px;
-  background:#fff !important; border-radius:2px; left:50%; top:50%;
-  transform-origin:center;
-}
-.st-modal .st-dialog .st-close::before{ transform:translate(-50%,-50%) rotate(45deg); }
-.st-modal .st-dialog .st-close::after { transform:translate(-50%,-50%) rotate(-45deg); }
-.st-modal .st-dialog .st-close:hover{
-  background:linear-gradient(135deg,var(--st-accent1),var(--st-accent2)) !important;
-  box-shadow:0 0 0 6px rgba(54,251,161,.12), 0 10px 30px rgba(0,0,0,.45);
-}
-.st-modal .st-dialog .st-close:hover::before,
-.st-modal .st-dialog .st-close:hover::after{ background:#0b1217 !important; } /* X preto */
-
-
-
-
-/* --- MODIFICADO: Manda o card para trás do saco --- */
-#stock-tokenization-pt .st-call{ 
-  z-index: 1 !important; /* Estava 10. O saco (.st-bag) é z-index: 2 */
-}
-#stock-tokenization-pt .st-note { pointer-events: none; }    /* passa cliques */
-#stock-tokenization-pt .st-note a { pointer-events: auto; }  /* mas mantém links do SVG clicáveis */
-#open-lcr-modal{ cursor:pointer !important; pointer-events:auto !important; }
-
-/* (bónus) pequeno fix no modal externo, havia "display: relative" */
-#lcr-swap-modal .modal-content{ position: relative; } /* em vez de display: relative */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ====== BOTÕES DO GATE (MetaMask) ====== */
+/* --- BOTÕES DO GATE (MetaMask) --- */
 .st-gate .st-btn{
   -webkit-appearance:none; appearance:none;
   border:1px solid rgba(255,255,255,.16);
@@ -2916,7 +1971,7 @@ body.st-modal-open {
 }
 .st-gate .st-btn.ghost{ background:rgba(0,0,0,.34); }
 
-/* Loader para o arranque do jogo */
+/* --- Loader para o arranque do jogo --- */
 .st-loading{ display:grid; place-items:center; height:var(--modal-content-h); gap:12px; }
 .st-spinner{
   width:38px; height:38px; border-radius:50%;
@@ -2925,819 +1980,176 @@ body.st-modal-open {
 }
 @keyframes stSpin{ to{ transform:rotate(360deg) } }
 
-
-
-
-
-
-/* Iframe pré-carregada (fora do ecrã, mas já a transferir assets) */
+/* --- Iframe pré-carregada --- */
 #stPrewarm{
   position:fixed; left:-9999px; top:-9999px;
-  width:320px; height:240px;            /* mantém layout para o Unity inicializar */
+  width:320px; height:240px;
   opacity:0; pointer-events:none; visibility:hidden;
 }
 
-
-
-
-
-/* ===== Galeria (fix de clique nas setas) ===== */
-.st-gallery{ position:relative; }
-.st-g-wrap{ position:relative; z-index:1; }
-.st-g-nav{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:56px; height:56px; display:grid; place-items:center;
-  border-radius:14px; border:1px solid rgba(255,255,255,.16);
-  background:rgba(0,0,0,.45);
-  z-index:5; pointer-events:auto;  /* <<< garante clique */
-  box-shadow:0 8px 24px rgba(0,0,0,.35);
-}
-.st-g-prev{ left:10px; }
-.st-g-next{ right:10px; }
-.st-g-nav:focus-visible{ outline:0; box-shadow:0 0 0 3px rgba(255,255,255,.2), 0 8px 24px rgba(0,0,0,.4) }
-.st-g-nav:hover{ background:rgba(0,0,0,.6) }
-
-
-
-
-
-
-
-
-
-
-/* === Galeria: setas sempre por cima e clicáveis === */
-.st-gallery{ position:relative; isolation:isolate; }
-.st-g-wrap{ position:relative; z-index:1; }
-.st-g-img{ display:block; width:100%; height:auto; pointer-events:none; } /* a imagem não bloqueia cliques */
-.st-g-nav{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:56px; height:56px; display:grid; place-items:center;
-  border-radius:14px; border:1px solid rgba(255,255,255,.16);
-  background:rgba(0,0,0,.45);
-  z-index:999; pointer-events:auto; box-shadow:0 8px 24px rgba(0,0,0,.35);
-}
-.st-g-prev{ left:10px; }
-.st-g-next{ right:10px; }
-.st-g-nav:hover{ background:rgba(0,0,0,.6); }
-.st-g-nav:focus-visible{ outline:0; box-shadow:0 0 0 3px rgba(255,255,255,.2), 0 8px 24px rgba(0,0,0,.4) }
-
-
-
-
-
-
-
-
-
-
-/* === Galeria: dots compactos sobre a imagem === */
-.st-gallery{ position:relative; isolation:isolate; }
-.st-g-wrap{ position:relative; z-index:1; }
-.st-g-img{ pointer-events:none; }            /* a imagem não apanha cliques */
-.st-g-dots{
-  position:absolute;
-  left:50%; bottom:12px; transform:translateX(-50%);
-  display:flex; gap:8px; z-index:8; pointer-events:auto;
-  padding:6px 10px; border-radius:999px;
-  background:rgba(14,17,22,.35);
-  -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
-  box-shadow:0 8px 18px rgba(0,0,0,.35);
-}
-.st-g-dot{
-  width:10px; height:10px; border-radius:999px;
-  border:1.5px solid rgba(255,255,255,.6);
-  background:rgba(0,0,0,.25);
-  display:inline-block;
-  transition:transform .15s, background .15s, box-shadow .15s, border-color .15s;
-}
-.st-g-dot:hover{ background:rgba(255,255,255,.28); }
-.st-g-dot[aria-current="true"]{
-  background:var(--st-accent,#36FBA1);
-  border-color:var(--st-accent,#36FBA1);
-  box-shadow:0 0 0 4px rgba(54,251,161,.18);
-  transform:scale(1.15);
-}
-
-/* responsivo: ainda menores em ecrãs muito estreitos */
-@media (max-width:420px){
-  .st-g-dots{ bottom:8px; gap:6px; padding:5px 8px; }
-  .st-g-dot{ width:8px; height:8px; }
-}
-
-
-/* === Galeria: dots menores === */
-#stock-tokenization-pt .st-g-dots{
-  bottom:10px;                 /* ligeiramente mais acima */
-  gap:6px;                     /* menos espaço entre dots */
-  padding:4px 8px;             /* pill mais pequena */
-}
-#stock-tokenization-pt .st-g-dot{
-  width:7px; height:7px;       /* ↓ tamanho do dot */
-  border-width:1.2px;          /* aro mais fino */
-}
-#stock-tokenization-pt .st-g-dot[aria-current="true"]{
-  transform:scale(1.08);       /* destaque mais discreto */
-  box-shadow:0 0 0 3px rgba(54,251,161,.16);
-}
-
-/* muito estreito */
-@media (max-width:420px){
-  #stock-tokenization-pt .st-g-dots{ bottom:6px; gap:5px; padding:3px 6px; }
-  #stock-tokenization-pt .st-g-dot{ width:6px; height:6px; }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================================
-   SLIDER "VER EM 2023" — FIX V2
-   ================================ */
-
-/* viewport do slider dentro do modal */
-#stModal-pt .ta-viewport,
-#stModal-en .ta-viewport{
-  --ta-pad: clamp(8px, 1.2vw, 16px);
-  inline-size: min(92vw, var(--modal-w, 1140px)); /* limita em desktop */
-  block-size: var(--modal-content-h, min(78vh, 760px));
-  margin-inline: auto;
-  padding: var(--ta-pad);
-  display: grid;
-  place-items: center;
+/* Acessibilidade */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
 }
 
-/* track ocupa tudo e mostra um slide por ecrã */
-#stModal-pt .ta-track,
-#stModal-en .ta-track{
-  inline-size: 100%;
-  block-size: 100%;
-  display: flex;
-  overflow: hidden;
-  scroll-behavior: smooth;
-  align-items: center;
-  justify-content: flex-start;
-}
 
-/* cada slide tem exatamente a largura/altura do viewport */
-#stModal-pt .ta-slide,
-#stModal-en .ta-slide{
-  flex: 0 0 100%;
-  inline-size: 100%;
-  block-size: 100%;
-  display: grid;
-  place-items: center;
-  padding: 0; /* sem “empurrões” extras */
-}
+/* ==================================================================
+   FIX GALERIA MODAL ("VER EM 2023") — LAYOUT GRID RESPONSIVO
+   ================================================================== */
 
-/* CONTENT WRAPPER opcional (primeiro filho do slide) */
-#stModal-pt .ta-slide > *:first-child,
-#stModal-en .ta-slide > *:first-child{
-  inline-size: 100%;
-  block-size: 100%;
-  display: grid;
-  place-items: center;
-}
-
-/* a regra que garante SEMPRE tudo visível, sem distorcer */
-#stModal-pt .ta-slide img,
-#stModal-en .ta-slide img{
-  width: auto !important;
-  height: auto !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;   /* mantém proporção, nunca corta */
-  border-radius: clamp(8px, 1vw, 18px);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
-}
-
-/* setas proporcionais e sempre dentro do canvas */
-#stModal-pt .ta-nav,
-#stModal-en .ta-nav{
-  position: absolute;
-  inset-block-start: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  inline-size: clamp(34px, 4.2vw, 56px);
-  block-size: clamp(34px, 4.2vw, 56px);
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  backdrop-filter: blur(2px);
-}
-#stModal-pt .ta-prev, #stModal-en .ta-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .ta-next, #stModal-en .ta-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
-
-/* dots fixos no interior */
-#stModal-pt .ta-dots,
-#stModal-en .ta-dots{
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: clamp(8px, 1vw, 16px);
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  z-index: 3;
-}
-
-/* desktops muito largos: evita sensação de “esticado” */
-@media (min-width: 1600px){
-  #stModal-pt .ta-viewport,
-  #stModal-en .ta-viewport{
-    inline-size: min(1200px, 92vw); /* ajusta aqui se quiseres 1100/1300/etc */
-  }
-}
-
-/* mobile estreito: mais espaço vertical útil e setas menores */
-@media (max-width: 420px){
-  #stModal-pt .ta-viewport,
-  #stModal-en .ta-viewport{
-    --ta-pad: clamp(10px, 3vw, 14px);
-    block-size: min(74vh, var(--modal-content-h, 74vh));
-  }
-  #stModal-pt .ta-nav, #stModal-en .ta-nav{
-    inline-size: clamp(28px, 9vw, 40px);
-    block-size: clamp(28px, 9vw, 40px);
-  }
-}
-
-
-
-
-
-/* ===== GALERIA DO MODAL: "VER EM 2023" — FIX RESPONSIVO ===== */
-
+/* Canvas principal da galeria dentro do modal */
 #stModal-pt .st-gallery,
-#stModal-en .st-gallery{
-  --pad: clamp(8px, 1.2vw, 16px);
-  position: relative;
-  inline-size: min(92vw, var(--modal-w, 1140px));
-  block-size: var(--modal-content-h, min(78vh, 760px));
-  margin: 0 auto;
-  padding: var(--pad);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* Área visível da imagem */
-#stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  inline-size: 100%;
-  block-size: 100%;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* A imagem NUNCA estica/corta */
-#stModal-pt .st-gallery .st-g-img,
-#stModal-en .st-gallery .st-g-img{
-  width: auto !important;
-  height: auto !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;
-  border-radius: clamp(8px, 1vw, 18px);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
-}
-
-/* Setas no interior e proporcionais */
-#stModal-pt .st-gallery .st-g-nav,
-#stModal-en .st-gallery .st-g-nav{
-  position: absolute;
-  inset-block-start: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  inline-size: clamp(34px, 4.2vw, 56px);
-  block-size: clamp(34px, 4.2vw, 56px);
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  backdrop-filter: blur(2px);
-}
-#stModal-pt .st-gallery .st-g-prev,
-#stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .st-gallery .st-g-next,
-#stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
-
-/* Dots sempre dentro do canvas */
-#stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: clamp(8px, 1vw, 16px);
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  z-index: 3;
-}
-
-/* Evitar sensação de "esticado" em ecrãs muito largos */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    inline-size: min(1200px, 92vw); /* ajusta para 1100/1300 se preferires */
-  }
-}
-
-/* Mobile: mais respiro vertical + setas menores */
-@media (max-width: 420px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    --pad: clamp(10px, 3vw, 14px);
-    block-size: min(74vh, var(--modal-content-h, 74vh));
-  }
-  #stModal-pt .st-gallery .st-g-nav,
-  #stModal-en .st-gallery .st-g-nav{
-    inline-size: clamp(28px, 9vw, 40px);
-    block-size: clamp(28px, 9vw, 40px);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===== GALERIA "VER EM 2023" — FIX FINAL (altura+largura) ===== */
-
-#stModal-pt .st-gallery,
-#stModal-en .st-gallery{
-  /* padding lateral + espaço reservado para dots */
-  --pad: clamp(8px, 1.2vw, 16px);
-  --dots-h: clamp(28px, 3.2vh, 44px);
-
-  position: relative;
-  inline-size: min(1100px, 92vw);                 /* limite em desktop (ajusta p/ 1200 se quiseres) */
-  block-size: var(--modal-content-h, min(78vh, 760px));
-  margin: 0 auto;
-  padding: var(--pad);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* Área que contém a imagem – agora com espaço para os dots */
-#stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  inline-size: 100%;
-  block-size: calc(100% - var(--dots-h));         /* <- reserva espaço para os dots */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* GARANTIA: qualquer imagem dentro da galeria encaixa sem cortar nem esticar */
-#stModal-pt .st-gallery img,
-#stModal-en .st-gallery img{
-  width: auto !important;
-  height: auto !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;
-  display: block;
-  border-radius: clamp(8px, 1vw, 18px);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
-}
-
-/* Setas dentro do canvas e proporcionais */
-#stModal-pt .st-gallery .st-g-nav,
-#stModal-en .st-gallery .st-g-nav{
-  position: absolute;
-  inset-block-start: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  inline-size: clamp(30px, 4.2vw, 56px);
-  block-size: clamp(30px, 4.2vw, 56px);
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  backdrop-filter: blur(2px);
-}
-#stModal-pt .st-gallery .st-g-prev,
-#stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .st-gallery .st-g-next,
-#stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
-
-/* Dots posicionados no fundo, sem roubar altura da imagem */
-#stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  position: absolute;
-  inset-inline: var(--pad);
-  inset-block-end: var(--pad);
-  min-block-size: calc(var(--dots-h) - var(--pad));
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  z-index: 3;
-  pointer-events: none;  /* os botões internos continuam clicáveis */
-}
-
-/* Mobile: mais vertical */
-@media (max-width: 420px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    --pad: clamp(10px, 3vw, 14px);
-    --dots-h: clamp(28px, 5vh, 56px);
-    block-size: min(74vh, var(--modal-content-h, 74vh));
-  }
-}
-
-/* 4K+: evita sensação de “esticado” */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    inline-size: min(1200px, 92vw);  /* aumenta aqui se quiseres maior */
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* ===== VER EM 2023 — ajustes finais (mobile + dots centrados) ===== */
-
-/* reservar altura: 100% - dots - padding */
-#stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  block-size: calc(100% - var(--dots-h) - var(--pad)) !important;
-  inline-size: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-}
-
-/* centrar os pontos no fundo, sempre */
-#stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  position: absolute !important;
-  left: 50% !important;
-  right: auto !important;
-  transform: translateX(-50%) !important;
-  bottom: var(--pad) !important;
-  width: auto !important;
-  min-block-size: calc(var(--dots-h) - var(--pad)) !important;
-  display: flex !important;
-  gap: 8px !important;
-  justify-content: center !important;
-  z-index: 4 !important;
-  pointer-events: auto !important; /* clicáveis */
-}
-
-/* garantir imagem SEMPRE contida no canvas */
-#stModal-pt .st-gallery img,
-#stModal-en .st-gallery img{
-  width: auto !important;
-  height: auto !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-/* mobile: dar um pouco mais de largura e altura útil */
-@media (max-width: 420px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    inline-size: min(94vw, var(--modal-w, 94vw)) !important;
-    block-size: min(76vh, var(--modal-content-h, 76vh)) !important;
-  }
-}
-
-/* desktop largo: limite confortável para não “esticar” */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    inline-size: min(1200px, 92vw) !important; /* ajusta 1100/1300 ao teu gosto */
-  }
-}
-~
-
-
-
-
-
-
-/* ===== VER EM 2023 — MOBILE LOCK-IN + Dots centrados ===== */
-
-/* reserva de espaço e limites do canvas */
-#stModal-pt .st-gallery,
-#stModal-en .st-gallery{
-  --pad: clamp(8px, 1.2vw, 16px);
-  --dots-h: clamp(28px, 3.2vh, 44px);
+#stModal-en .st-gallery {
+  --pad: clamp(8px, 2.5vw, 14px); /* Padding interno */
+  /* Largura limitada em desktop, ocupa quase tudo em mobile */
   inline-size: min(96vw, var(--modal-w, 1140px));
-  block-size: var(--modal-content-h, min(78vh, 760px));
-  margin: 0 auto;
-  padding: var(--pad);
-  position: relative;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-}
-
-/* ALTURA CERTA DO WRAP: 100% - dots - 2*padding  */
-#stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  inline-size: 100% !important;
-  block-size: calc(100% - var(--dots-h) - (var(--pad) * 2)) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-}
-
-/* garante que nada interno fixa alturas em px */
-#stModal-pt .st-gallery [style*="height"],
-#stModal-en .st-gallery [style*="height"]{ height: auto !important; }
-#stModal-pt .st-gallery [style*="max-height"],
-#stModal-en .st-gallery [style*="max-height"]{ max-height: 100% !important; }
-
-/* a imagem ocupa o canvas sem cortar nem esticar */
-#stModal-pt .st-gallery img,
-#stModal-en .st-gallery img{
-  width: auto !important;
-  height: auto !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-  border-radius: clamp(8px, 1vw, 18px);
-}
-
-/* setas proporcionais e dentro do canvas */
-#stModal-pt .st-gallery .st-g-nav,
-#stModal-en .st-gallery .st-g-nav{
-  position: absolute;
-  inset-block-start: 50%;
-  transform: translateY(-50%);
-  inline-size: clamp(28px, 4.2vw, 56px);
-  block-size: clamp(28px, 4.2vw, 56px);
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  z-index: 3;
-}
-#stModal-pt .st-gallery .st-g-prev,
-#stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .st-gallery .st-g-next,
-#stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
-
-/* dots realmente centrados no fundo */
-#stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  position: absolute !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  bottom: var(--pad) !important;
-  width: auto !important;
-  min-block-size: calc(var(--dots-h) - var(--pad)) !important;
-  display: flex !important;
-  gap: 8px !important;
-  justify-content: center !important;
-  z-index: 4 !important;
-}
-
-/* mais folga vertical em mobile estreito */
-@media (max-width: 420px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    block-size: min(76vh, var(--modal-content-h, 76vh));
-  }
-}
-
-/* em desktop largo, limita largura para não “esticar” */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery,
-  #stModal-en .st-gallery{
-    inline-size: min(1200px, 92vw);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* ===== VER EM 2023 — LAYOUT GRID À PROVA DE MOBILE ===== */
-
-/* Canvas do modal (mantém tuas vars) */
-#stModal-pt .st-gallery,
-#stModal-en .st-gallery{
-  --pad: clamp(8px, 2.5vw, 14px);
-  inline-size: min(96vw, var(--modal-w, 1140px));
+  /* Altura baseada na variável do modal, com fallback seguro */
   block-size: var(--modal-content-h, min(76svh, 720px));
   margin: 0 auto;
   padding: var(--pad);
-  position: relative;
+  position: relative; /* Para posicionar setas */
   box-sizing: border-box;
 
-  /* O truque: 2 linhas => imagem (1fr) + dots (auto) */
+  /* Layout principal: 2 linhas -> imagem (1fr) + dots (auto) */
   display: grid;
-  grid-template-rows: 1fr auto;
-  align-items: center;
-  row-gap: clamp(8px, 2vw, 14px);
-  overflow: hidden;
+  grid-template-rows: 1fr auto; /* A imagem expande, os dots ocupam o necessário */
+  align-items: center; /* Centraliza verticalmente o conteúdo das linhas */
+  row-gap: clamp(8px, 2vw, 14px); /* Espaço entre imagem e dots */
+  overflow: hidden; /* Garante que nada sai do canvas */
 }
 
-/* a área da imagem ocupa 100% da 1ª linha */
+/* Contentor da imagem (ocupa a primeira linha do grid) */
 #stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  grid-row: 1 / 2;
+#stModal-en .st-gallery .st-g-wrap {
+  grid-row: 1 / 2; /* Ocupa a primeira linha definida no grid */
   inline-size: 100%;
   block-size: 100%;
-  display: grid;
+  display: grid; /* Usado para centrar a imagem dentro desta área */
   place-items: center;
-  overflow: hidden;
+  overflow: hidden; /* Garante que a imagem não transborda */
 }
 
-/* qualquer <img> dentro da galeria: nunca corta, nunca estica */
-#stModal-pt .st-gallery img,
-#stModal-en .st-gallery img{
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain !important;
-  display: block !important;
-  border-radius: clamp(8px, 1vw, 18px);
+/* A imagem em si: Regra crucial para responsividade */
+#stModal-pt .st-gallery img, /* Aplica a qualquer imagem dentro da galeria */
+#stModal-en .st-gallery img {
+  max-inline-size: 100% !important; /* Nunca mais larga que o contentor */
+  max-block-size: 100% !important; /* Nunca mais alta que o contentor */
+  width: auto !important; /* Deixa o browser calcular a largura mantendo proporção */
+  height: auto !important; /* Deixa o browser calcular a altura mantendo proporção */
+  object-fit: contain !important; /* Garante que a imagem inteira é visível, sem cortes, mantendo proporção */
+  display: block !important; /* Evita espaços extras abaixo da imagem */
+  border-radius: clamp(8px, 1vw, 18px); /* Borda arredondada */
 }
 
-/* dots passam a participar no grid (2ª linha) e ficam centrados */
+/* Dots (ocupam a segunda linha do grid) */
 #stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  grid-row: 2 / 3;
-  position: static !important;
+#stModal-en .st-gallery .st-g-dots {
+  grid-row: 2 / 3; /* Ocupa a segunda linha definida no grid */
+  position: static !important; /* Remove posicionamento absoluto anterior */
   left: auto !important;
   bottom: auto !important;
-  transform: none !important;
+  transform: none !important; /* Remove transformações anteriores */
 
-  display: flex !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  min-block-size: 24px;
-  z-index: 3;
+  display: flex !important; /* Para alinhar os dots horizontalmente */
+  justify-content: center !important; /* Centra os dots horizontalmente */
+  align-items: center; /* Alinha verticalmente se houver alturas diferentes */
+  gap: 8px !important; /* Espaço entre os dots */
+  min-block-size: 22px; /* Altura mínima para a área dos dots */
+  z-index: 3; /* Acima da imagem, abaixo das setas */
+  padding: 4px 0; /* Pequeno espaçamento vertical */
+  pointer-events: auto; /* Garante que os dots são clicáveis */
 }
 
-/* setas continuam absolutas, dentro do canvas */
+/* Estilo individual dos dots */
+#stModal-pt .st-gallery .st-g-dot,
+#stModal-en .st-gallery .st-g-dot {
+  inline-size: 8px; /* Tamanho dos dots */
+  block-size: 8px;
+  border-radius: 999px; /* Círculo perfeito */
+  opacity: .45; /* Opacidade do dot inativo */
+  background: #9bd7a7; /* Cor base (ajuste se necessário) */
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s; /* Transição suave */
+  pointer-events: auto; /* Garante clique individual */
+}
+#stModal-pt .st-gallery .st-g-dot:hover,
+#stModal-en .st-gallery .st-g-dot:hover {
+  opacity: 0.7; /* Opacidade no hover */
+}
+#stModal-pt .st-gallery .st-g-dot[aria-current="true"], /* Estilo do dot ativo */
+#stModal-en .st-gallery .st-g-dot[aria-current="true"] {
+  opacity: 1; /* Totalmente visível */
+  transform: scale(1.1); /* Ligeiramente maior */
+}
+
+
+/* Setas de navegação (mantêm posicionamento absoluto) */
 #stModal-pt .st-gallery .st-g-nav,
-#stModal-en .st-gallery .st-g-nav{
+#stModal-en .st-gallery .st-g-nav {
   position: absolute;
-  inset-block-start: 50%;
+  inset-block-start: 50%; /* Alinha verticalmente ao centro */
   transform: translateY(-50%);
-  inline-size: clamp(28px, 4.2vw, 56px);
+  inline-size: clamp(28px, 4.2vw, 56px); /* Tamanho responsivo */
   block-size: clamp(28px, 4.2vw, 56px);
-  border-radius: 999px;
+  border-radius: 999px; /* Circular */
   display: grid;
   place-items: center;
-  z-index: 4;
+  z-index: 4; /* Acima da imagem e dos dots */
+  border: 1px solid #ffffff22; /* Borda subtil */
+  background: #00000033; /* Fundo translúcido */
+  color: #fff; /* Cor do ícone (se usar :after) */
+  font: inherit; /* Remove estilos de botão padrão */
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
 }
-#stModal-pt .st-gallery .st-g-prev, #stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .st-gallery .st-g-next, #stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
+#stModal-pt .st-gallery .st-g-prev,
+#stModal-en .st-gallery .st-g-prev { inset-inline-start: clamp(6px, 1vw, 16px); } /* Posição esquerda */
+#stModal-pt .st-gallery .st-g-next,
+#stModal-en .st-gallery .st-g-next { inset-inline-end:   clamp(6px, 1vw, 16px); } /* Posição direita */
 
-/* mobile muito estreito: mais folga vertical e menos padding */
-@media (max-width: 540px){
-  #stModal-pt .st-gallery, #stModal-en .st-gallery{
-    --pad: clamp(8px, 3vw, 12px);
-    block-size: min(76dvh, var(--modal-content-h, 76dvh));
+#stModal-pt .st-gallery .st-g-nav:hover,
+#stModal-en .st-gallery .st-g-nav:hover {
+  background: #00000055; /* Fundo mais escuro no hover */
+  transform: translateY(-50%) scale(1.05); /* Ligeiro aumento */
+}
+
+/* Ícone da seta (se estiver a usar :after como antes) */
+#stModal-pt .st-gallery .st-g-nav::after,
+#stModal-en .st-gallery .st-g-nav::after {
+  content: "";
+  width: clamp(10px, 1.5vw, 16px); /* Tamanho responsivo do chevron */
+  height: clamp(10px, 1.5vw, 16px);
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg);
+}
+#stModal-pt .st-gallery .st-g-prev::after,
+#stModal-en .st-gallery .st-g-prev::after { transform: rotate(225deg); } /* Inverte para a esquerda */
+
+
+/* Ajuste para mobile muito estreito: mais altura útil */
+@media (max-width: 540px) {
+  #stModal-pt .st-dialog,
+  #stModal-en .st-dialog {
+     /* Usa dvh para altura dinâmica do viewport */
+    --modal-content-h: min(74dvh, 720px);
+  }
+  #stModal-pt .st-gallery,
+  #stModal-en .st-gallery {
+    --pad: clamp(8px, 3vw, 12px); /* Menos padding */
   }
 }
 
-/* desktop largo: evitar “esticado” */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery, #stModal-en .st-gallery{
-    inline-size: min(1200px, 92vw);
+/* Ajuste para desktop largo: evita imagem demasiado "esticada" */
+@media (min-width: 1600px) {
+  #stModal-pt .st-gallery,
+  #stModal-en .st-gallery {
+    inline-size: min(1200px, 92vw); /* Limite de largura maior */
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===== GALERIA "VER EM 2023" — SLIDER NOVO, RESPONSIVO ===== */
-
-#stModal-pt .st-gallery,
-#stModal-en .st-gallery{
-  --pad: clamp(8px, 2.5vw, 14px);
-  inline-size: min(96vw, var(--modal-w, 1140px));
-  block-size: var(--modal-content-h, 76svh);
-  margin: 0 auto;
-  padding: var(--pad);
-  box-sizing: border-box;
-
-  display: grid;                 /* 2 linhas: imagem (1fr) + dots (auto) */
-  grid-template-rows: 1fr auto;
-  row-gap: clamp(8px, 2vw, 14px);
-  overflow: hidden;
-  position: relative;
-}
-
-/* área da imagem ocupa 100% da 1ª linha */
-#stModal-pt .st-gallery .st-g-wrap,
-#stModal-en .st-gallery .st-g-wrap{
-  grid-row: 1/2;
-  inline-size: 100% !important;
-  block-size: 100% !important;
-  display: grid !important;
-  place-items: center !important;
-  overflow: hidden !important;
-}
-
-/* imagem sem cortes/distorção, sempre centrada */
-#stModal-pt .st-gallery .st-g-img,
-#stModal-en .st-gallery .st-g-img{
-  width: 100% !important;
-  height: 100% !important;
-  max-inline-size: 100% !important;
-  max-block-size: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-  border-radius: clamp(8px, 1vw, 18px);
-}
-
-/* dots na 2ª linha do grid (centrados) */
-#stModal-pt .st-gallery .st-g-dots,
-#stModal-en .st-gallery .st-g-dots{
-  grid-row: 2/3;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 8px !important;
-  min-block-size: 22px;
-}
-
-#stModal-pt .st-gallery .st-g-dot,
-#stModal-en .st-gallery .st-g-dot{
-  inline-size: 8px; block-size: 8px;
-  border-radius: 999px; opacity: .45;
-  background: #9bd7a7;
-  border: 0; padding: 0; cursor: pointer;
-}
-#stModal-pt .st-gallery .st-g-dot.is-active,
-#stModal-en .st-gallery .st-g-dot.is-active{ opacity: 1; }
-
-/* setas dentro do canvas, proporcionais */
-#stModal-pt .st-gallery .st-g-nav,
-#stModal-en .st-gallery .st-g-nav{
-  position: absolute;
-  inset-block-start: 50%;
-  transform: translateY(-50%);
-  inline-size: clamp(28px, 4.2vw, 56px);
-  block-size: clamp(28px, 4.2vw, 56px);
-  border-radius: 999px;
-  display: grid; place-items: center;
-  z-index: 4; border: 1px solid #ffffff22;
-  background: #00000033;
-  color: #fff; font: inherit; cursor: pointer;
-}
-#stModal-pt .st-gallery .st-g-prev, #stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
-#stModal-pt .st-gallery .st-g-next, #stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
-
-/* mobile muito estreito: mais folga vertical */
-@media (max-width: 540px){
-  #stModal-pt .st-dialog, #stModal-en .st-dialog{ --modal-content-h: 74dvh; }
-  #stModal-pt .st-gallery, #stModal-en .st-gallery{ --pad: clamp(8px, 3vw, 12px); }
-}
-
-/* desktop largo: evita “esticado” */
-@media (min-width: 1600px){
-  #stModal-pt .st-gallery, #stModal-en .st-gallery{ inline-size: min(1200px, 92vw); }
 }
