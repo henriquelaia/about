@@ -3194,3 +3194,106 @@ body.st-modal-open {
     inline-size: min(1200px, 92vw);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== GALERIA "VER EM 2023" — SLIDER NOVO, RESPONSIVO ===== */
+
+#stModal-pt .st-gallery,
+#stModal-en .st-gallery{
+  --pad: clamp(8px, 2.5vw, 14px);
+  inline-size: min(96vw, var(--modal-w, 1140px));
+  block-size: var(--modal-content-h, 76svh);
+  margin: 0 auto;
+  padding: var(--pad);
+  box-sizing: border-box;
+
+  display: grid;                 /* 2 linhas: imagem (1fr) + dots (auto) */
+  grid-template-rows: 1fr auto;
+  row-gap: clamp(8px, 2vw, 14px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* área da imagem ocupa 100% da 1ª linha */
+#stModal-pt .st-gallery .st-g-wrap,
+#stModal-en .st-gallery .st-g-wrap{
+  grid-row: 1/2;
+  inline-size: 100% !important;
+  block-size: 100% !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+}
+
+/* imagem sem cortes/distorção, sempre centrada */
+#stModal-pt .st-gallery .st-g-img,
+#stModal-en .st-gallery .st-g-img{
+  width: 100% !important;
+  height: 100% !important;
+  max-inline-size: 100% !important;
+  max-block-size: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  border-radius: clamp(8px, 1vw, 18px);
+}
+
+/* dots na 2ª linha do grid (centrados) */
+#stModal-pt .st-gallery .st-g-dots,
+#stModal-en .st-gallery .st-g-dots{
+  grid-row: 2/3;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-block-size: 22px;
+}
+
+#stModal-pt .st-gallery .st-g-dot,
+#stModal-en .st-gallery .st-g-dot{
+  inline-size: 8px; block-size: 8px;
+  border-radius: 999px; opacity: .45;
+  background: #9bd7a7;
+  border: 0; padding: 0; cursor: pointer;
+}
+#stModal-pt .st-gallery .st-g-dot.is-active,
+#stModal-en .st-gallery .st-g-dot.is-active{ opacity: 1; }
+
+/* setas dentro do canvas, proporcionais */
+#stModal-pt .st-gallery .st-g-nav,
+#stModal-en .st-gallery .st-g-nav{
+  position: absolute;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  inline-size: clamp(28px, 4.2vw, 56px);
+  block-size: clamp(28px, 4.2vw, 56px);
+  border-radius: 999px;
+  display: grid; place-items: center;
+  z-index: 4; border: 1px solid #ffffff22;
+  background: #00000033;
+  color: #fff; font: inherit; cursor: pointer;
+}
+#stModal-pt .st-gallery .st-g-prev, #stModal-en .st-gallery .st-g-prev{ inset-inline-start: clamp(6px, 1vw, 16px); }
+#stModal-pt .st-gallery .st-g-next, #stModal-en .st-gallery .st-g-next{ inset-inline-end:   clamp(6px, 1vw, 16px); }
+
+/* mobile muito estreito: mais folga vertical */
+@media (max-width: 540px){
+  #stModal-pt .st-dialog, #stModal-en .st-dialog{ --modal-content-h: 74dvh; }
+  #stModal-pt .st-gallery, #stModal-en .st-gallery{ --pad: clamp(8px, 3vw, 12px); }
+}
+
+/* desktop largo: evita “esticado” */
+@media (min-width: 1600px){
+  #stModal-pt .st-gallery, #stModal-en .st-gallery{ inline-size: min(1200px, 92vw); }
+}

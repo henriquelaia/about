@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="pt">
 <head>
-<!-- ENV SWITCH (choose ONE mode) -->
-  <!-- LOCAL (VS/VSC): uncomment the two lines below -->
-  <script>window.STOCKTOK_BASE = ".";</script>
-  <script src="./env-switcher.js"></script> 
-  <!-- WORDPRESS (Elementor/cPanel): keep the lines above commented (default) -->
+<!-- LOCAL (VS): uncomment next 2 lines -->
+<script>window.STOCKTOK_BASE = ".";</script>
+<script src="./env-switcher.js"></script>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -86,7 +84,9 @@
 
     <!-- MODAL -->
     <div class="st-modal" id="stModal-pt" aria-hidden="true" hidden style="display:none">
-      <div class="st-backdrop" data-close></div>
+      <div class="st-backdrop" data-close>
+    <div class="st-gallery" data-gallery="2023"></div>
+</div>
       <div class="st-dialog" role="dialog" aria-modal="true" aria-labelledby="stModal-title-pt"
            style="--modal-w:min(96vw,1140px);--modal-maxh:88vh;--modal-content-h:min(78vh,760px);--modal-close:46px">
         <button class="st-close" type="button" data-close aria-label="Fechar">×</button>

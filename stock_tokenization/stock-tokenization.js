@@ -453,3 +453,101 @@
 
 })();
 
+/* ==== SLIDER "VER EM 2023" — NOVO ==== */
+(function(){
+  // Pasta (local ou WP) – o env-switcher já ajusta em local
+  var FOLDER = (window.EVENTS_GALLERY_FOLDER || "./assets/slider_evento_ver_em_2023/");
+  if(!/\/$/.test(FOLDER)) FOLDER += "/";
+
+  // Lista real no teu projeto (6 imagens)
+  var IMAGES_2023 = [
+    "333474899_697323278839036_4063126394647596729_n(1).jpg",
+    "333639353_753782802781633_2093337060534255533_n(1).jpg",
+    "333730729_894409598501473_7317957485369113594_n(1).jpg",
+    "333862124_720665566425567_7691626572652514176_n(1).jpg",
+    "333917185_229590579469196_4478464698466250222_n(1).jpg",
+    "334222876_2062663927275549_6324348832859277649_n(1).jpg"
+  ];
+
+  function mount(modalId){
+    var modal = document.getElementById(modalId);
+    if(!modal) return;
+    var root = modal.querySelector('.st-gallery[data-gallery="2023"]');
+    if(!root){
+      // fallback: cria container no início do conteúdo da modal
+      var content = modal.querySelector('.st-modal-content, .content, .modal-content') || modal;
+      root = document.createElement('div');
+      root.className = 'st-gallery';
+      root.dataset.gallery = '2023';
+      content.prepend(root);
+    }
+
+    // estrutura mínima
+    root.innerHTML =
+      '<div class="st-g-wrap"><img class="st-g-img" alt="Gallery 2023"></div>'+
+      '<button class="st-g-nav st-g-prev" aria-label="Anterior">‹</button>'+
+      '<button class="st-g-nav st-g-next" aria-label="Seguinte">›</button>'+
+      '<div class="st-g-dots"></div>';
+
+    var img   = root.querySelector('.st-g-img');
+    var dotsC = root.querySelector('.st-g-dots');
+    dotsC.innerHTML = IMAGES_2023.map(function(_,i){
+      return '<button class="st-g-dot" data-i="'+i+'" aria-label="Slide '+(i+1)+'"></button>';
+    }).join('');
+
+    // pré-carregar
+    IMAGES_2023.forEach(function(n){ var p=new Image(); p.src=FOLDER+n; });
+
+    var i = 0;
+    function show(idx){
+      i = (idx + IMAGES_2023.length) % IMAGES_2023.length;
+      img.src = FOLDER + IMAGES_2023[i];
+      var all = dotsC.querySelectorAll('.st-g-dot');
+      for(var k=0;k<all.length;k++) all[k].classList.toggle('is-active', k===i);
+      // Garantia: ocupar 100% do wrap sem cortar
+      img.style.width='100%'; img.style.height='100%'; img.style.objectFit='contain';
+    }
+
+    root.querySelector('.st-g-prev').onclick = function(){ show(i-1); };
+    root.querySelector('.st-g-next').onclick = function(){ show(i+1); };
+    dotsC.addEventListener('click', function(e){
+      var b = e.target.closest('.st-g-dot'); if(b){ show(parseInt(b.dataset.i,10)); }
+    });
+
+    // swipe
+    var sx=null, sid=null;
+    root.addEventListener('pointerdown', function(e){ sx=e.clientX; sid=e.pointerId; root.setPointerCapture(sid); });
+    root.addEventListener('pointerup', function(e){
+      if(sx!=null){ var dx=e.clientX-sx; if(Math.abs(dx)>30){ (dx<0?show(i+1):show(i-1)); } sx=null; sid=null; }
+    });
+
+    // teclado quando a modal está visível
+    document.addEventListener('keydown', function(e){
+      if(modal.getAttribute('aria-hidden')==='true') return;
+      if(e.key==='ArrowLeft') show(i-1);
+      if(e.key==='ArrowRight') show(i+1);
+    });
+
+    // fit automático quando a modal abrir/redimensionar
+    function fit(){
+      if(modal.getAttribute('aria-hidden')==='true') return;
+      var dotsH = dotsC.getBoundingClientRect().height || 0;
+      var cs = getComputedStyle(root);
+      var padT = parseFloat(cs.paddingTop)||0, padB = parseFloat(cs.paddingBottom)||0;
+      var h = root.clientHeight - padT - padB - dotsH;
+      var wrap = root.querySelector('.st-g-wrap');
+      wrap.style.height = Math.max(0,h) + 'px';
+    }
+    var ro = new ResizeObserver(fit); ro.observe(root);
+    var mo = new MutationObserver(fit); mo.observe(modal, {attributes:true, attributeFilter:['style','class','aria-hidden','hidden']});
+    window.addEventListener('resize', fit, {passive:true});
+    window.addEventListener('orientationchange', fit, {passive:true});
+
+    // primeira imagem
+    show(0);
+    // pequeno delay para garantir medidas quando a modal abre
+    setTimeout(fit, 0);
+  }
+
+  ['stModal-pt','stModal-en'].forEach(mount);
+})();
